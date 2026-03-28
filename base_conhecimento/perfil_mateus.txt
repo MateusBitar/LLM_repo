@@ -8,4 +8,3 @@ INFORMAÇÕES SOBRE O MATEUS:
 
 PROJETOS DE DESTAQUE:
 1. Sistema de Previsão de Churn: Um pipeline de dados de ponta a ponta que prevê evasão de clientes. O Mateus usou a técnica SMOTE para balancear os dados e o algoritmo XGBoost, aumentando a detecção de clientes em risco de 46% para 64%. O modelo foi colocado em produção usando Streamlit e Plotly.
-2. Automação de Extração de PDFs: Um sistema corporativo para limpar e extrair dados complexos de arquivos PDF, economizando horas de trabalho manual.

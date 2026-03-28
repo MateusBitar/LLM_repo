@@ -1,28 +1,31 @@
-from langchain_community.document_loaders import TextLoader
+from langchain_community.document_loaders import DirectoryLoader, TextLoader
 from langchain_text_splitters import RecursiveCharacterTextSplitter
 from langchain_chroma import Chroma
 from langchain_ollama import OllamaEmbeddings, OllamaLLM
 from langchain.chains import create_retrieval_chain
 from langchain.chains.combine_documents import create_stuff_documents_chain
 from langchain_core.prompts import ChatPromptTemplate
+import os
 
 print("🧠 Iniciando o cérebro do assistente...")
 
-# 1. Carregar o seu documento de perfil
-loader = TextLoader("perfil_mateus.txt", encoding="utf-8")
+# 1. Carregar TODOS os arquivos de texto da pasta base_conhecimento
+# Usamos o TextLoader por baixo dos panos para garantir que ele leia os acentos em pt-br (utf-8)
+loader = DirectoryLoader('./base_conhecimento', glob="**/*.txt", loader_cls=TextLoader, loader_kwargs={'encoding': 'utf-8'})
 docs = loader.load()
 
-# 2. Quebrar o texto em pedaços menores (chunks) para a IA processar melhor
+# 2. Quebrar os textos em pedaços menores (chunks)
 text_splitter = RecursiveCharacterTextSplitter(chunk_size=500, chunk_overlap=50)
 splits = text_splitter.split_documents(docs)
 
-# 3. Criar o Banco de Dados Vetorial (A "Memória" com ChromaDB)
-# Usando o nomic-embed-text que você baixou no servidor
-print("📚 Vetorizando o seu currículo...")
+# 3. Criar e SALVAR o Banco de Dados Vetorial no disco
+print("📚 Lendo a pasta e vetorizando o seu currículo...")
 vectorstore = Chroma.from_documents(
     documents=splits,
-    embedding=OllamaEmbeddings(model="nomic-embed-text")
+    embedding=OllamaEmbeddings(model="nomic-embed-text"),
+    persist_directory="./banco_vetorial_mateus" # <-- Isso salva a memória fisicamente no servidor!
 )
+
 
 # 4. Configurar o "Buscador" e o Llama 3
 retriever = vectorstore.as_retriever()
