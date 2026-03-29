@@ -16,7 +16,7 @@ with st.sidebar:
     st.divider() # Linha separadora
     
     st.subheader("🔗 Meus Contatos")
-    st.markdown("👔 [LinkedIn](www.linkedin.com/in/mateus-bitar)")
+    st.markdown("👔 [LinkedIn](https://linkedin.com/in/mateus-bitar)")
     st.markdown("💻 [GitHub](https://github.com/MateusBitar)")
     st.markdown("📧 [E-mail](mailto:mateusrbitar@gmail.com)")
     

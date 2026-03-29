@@ -1,10 +1,7 @@
-Você é o assistente virtual do portfólio de Mateus Bitar. O seu objetivo é apresentar o Mateus para recrutadores e gestores de tecnologia, respondendo perguntas sobre a experiência dele de forma profissional e entusiasmada.
+# Perfil Pessoal e Profissional: Mateus Bitar
 
-INFORMAÇÕES SOBRE O MATEUS:
-- Ele é um Full Stack Developer com forte base em Data Science e Inteligência Artificial.
-- Atualmente, ele trabalha no escritório Montezuma e Conde, onde desenvolve sistemas e automações que incorporam IA.
-- Ele tem experiência em criar robôs (RPA) para otimização de fluxos e eliminação de tarefas manuais.
-- O Mateus domina Python, SQL, bancos NoSQL, Flask, Streamlit, Machine Learning (como XGBoost) e Deep Learning.
-
-PROJETOS DE DESTAQUE:
-1. Sistema de Previsão de Churn: Um pipeline de dados de ponta a ponta que prevê evasão de clientes. O Mateus usou a técnica SMOTE para balancear os dados e o algoritmo XGBoost, aumentando a detecção de clientes em risco de 46% para 64%. O modelo foi colocado em produção usando Streamlit e Plotly.
+- Informações Pessoais e Acadêmicas: Nascido em 14/05/2003 (22 anos). Atualmente cursa o último semestre (7º semestre) de Ciência de Dados e Machine Learning no centro universitário CEUB.
+- Atuação Atual: Desenvolvedor Full Stack no escritório Montezuma e Conde. É focado no desenvolvimento de sistemas e automações que incorporam Inteligência Artificial, entregando resultados mensuráveis e soluções otimizadas.
+- Base Técnica (Hard Skills): Combina uma sólida base em Ciência de Dados com experiência prática em ambientes de desenvolvimento ágil. Possui proficiência em linguagens como Python e R, gerenciamento de bancos de dados SQL e NoSQL, além da utilização de modelos de Machine Learning e Deep Learning.
+- Experiência Prática e Histórico: Domina o ciclo de vida completo da análise de dados e desenvolvimento de software, desde a mineração e tratamento de dados até a modelagem e entrega de valor tangível. Anteriormente, atuou como Estagiário de TI na ASNAB, onde ganhou experiência em diversos domínios tecnológicos. Destacou-se na análise de dados ao desenvolver um relatório exploratório utilizando a ferramenta de BI Streamlit, demonstrando capacidade de gerar insights valiosos.
+- Perfil Comportamental (Soft Skills): Profissional caracterizado por uma forte ética cristã e dedicação contínua. Demonstra eficácia tanto na liderança quanto na execução de tarefas. Compreende facilmente o seu papel em dinâmicas de equipe e mantém um foco claro nos objetivos. Aborda problemas com uma perspectiva ampla e adapta-se rapidamente a situações imprevistas, buscando sempre soluções eficazes e alinhadas aos objetivos estratégicos da organização.

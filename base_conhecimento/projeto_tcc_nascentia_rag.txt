@@ -1,0 +1,9 @@
+# Projeto de Destaque / TCC (CEUB): Chatbot Nascentia (Sistema RAG)
+
+- O Desafio / Demanda: Como Projeto Integrador (TCC) do curso de Ciência de Dados e Machine Learning do CEUB, o desafio era criar um assistente virtual especializado em saúde materno-infantil (parto, pré-natal e pós-parto). O sistema precisava consultar bases de conhecimento médicas reais (PDFs) para fornecer respostas precisas, seguras e com citações automáticas das fontes, garantindo a confiabilidade da informação.
+- O que o Mateus fez (Ação e Arquitetura): Contribuiu no desenvolvimento de um sistema RAG (Retrieval-Augmented Generation) robusto, arquitetado em dois ambientes distintos:
+  1. Ambiente de Desenvolvimento (Dev): Criou um laboratório de testes permitindo a troca dinâmica entre APIs fechadas (OpenAI) e múltiplos modelos Open-Source do HuggingFace (como Qwen, Phi-3, Gemma e Mistral), possibilitando o teste de modelos leves, médios e pesados. Implementou a visualização e análise de chunks indexados.
+  2. Ambiente de Produção (Final): Consolidou o sistema utilizando o modelo GPT-4o-mini com uma interface web moderna (Streamlit) customizada com a identidade visual da marca Nascentia.
+  3. Engenharia de Busca: Implementou índices vetoriais FAISS persistentes, com separação de índices por modelo, além de processamento automatizado de documentos PDF.
+- Tecnologias Utilizadas: Python, Streamlit (Interface Web), FAISS (Banco Vetorial de alta performance para similaridade), OpenAI API (gpt-4o-mini e embeddings text-embedding-3-small), HuggingFace Hub (Modelos open-source variados e embeddings multilingual-e5-large).
+- Entregas e Resultados: Entrega de um sistema conversacional modular e escalável, capaz de manter contexto de memória e gerar respostas cientificamente embasadas através da leitura autônoma de documentos em PDF. O projeto demonstra profundo conhecimento no ecossistema de LLMs modernos e na arquitetura de aplicações de IA generativa para o setor de saúde.

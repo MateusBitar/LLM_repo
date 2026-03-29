@@ -1,0 +1,10 @@
+# Experiência Profissional: Estagiário de TI na ASNAB (Associação Nacional dos Empregados da Conab)
+
+- Período: Fevereiro de 2024 a Agosto de 2025 (Brasília, DF).
+- Sobre a Empresa: A ASNAB é uma instituição de extrema relevância histórica, criada na década de 1990 para representar e defender os trabalhadores da Conab (empresa pública originada da fusão de gigantes do abastecimento como Cobal, Cibrazem e CFP). A associação atua na garantia de direitos trabalhistas e na preservação das políticas públicas de segurança alimentar e agronegócio no Brasil.
+- O Desafio / Demanda: A associação precisava garantir a estabilidade de sua infraestrutura tecnológica diária, ao mesmo tempo em que demandava a modernização da gestão de suas informações internas, exigindo um perfil multifuncional capaz de transitar entre o suporte técnico operacional e o desenvolvimento analítico.
+- O que foi feito (Ações e Tecnologias): Atuei de forma abrangente no departamento de Tecnologia da Informação, com foco em três frentes:
+  1. Análise de Dados e BI: Desenvolvi processos de Análise Exploratória de Dados (EDA) e criei painéis interativos de Business Intelligence utilizando Python e o framework Streamlit.
+  2. Desenvolvimento de Sistemas: Contribuí ativamente na codificação, manutenção e melhoria das soluções tecnológicas internas da associação.
+  3. Infraestrutura e Gestão de TI: Fui responsável por garantir a estabilidade da infraestrutura de rede e prestar Suporte Técnico de primeiro nível (N1) para as operações críticas da entidade.
+- Entregas e Resultados: Minha atuação garantiu a continuidade operacional da ASNAB e reduziu gargalos técnicos do dia a dia. O grande destaque foi a entrega de relatórios de dados automatizados via Streamlit, que transformaram dados brutos em insights visuais claros. Essa experiência solidificou minha visão sistêmica sobre necessidades corporativas e provou minha capacidade de entregar valor analítico tangível logo no início da minha carreira.
