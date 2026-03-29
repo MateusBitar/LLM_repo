@@ -8,3 +8,5 @@
   4. Deploy: Construiu uma aplicação web interativa exportando o modelo (Joblib) para que equipes de vendas fizessem simulações visuais em tempo real.
 - Tecnologias Utilizadas: Python, Pandas, Numpy. Para Machine Learning: Scikit-Learn, XGBoost (Extreme Gradient Boosting) e Imbalanced-learn (SMOTE). Para deploy e visualização: Streamlit, Plotly, Matplotlib e Seaborn.
 - Entregas e Resultados (O ROI do Modelo): A substituição de um modelo baseline (Random Forest, que detectava 46%) pelo XGBoost aliado ao SMOTE fez o Recall saltar para 64%. O modelo conseguiu detectar 39% a mais de clientes em risco real de cancelamento. A entrega do app em Streamlit gerou alto valor tático, permitindo que a empresa salve centenas de assinaturas mensalmente com ofertas estratégicas.
+
+- Link do Projeto: https://github.com/MateusBitar/Previsao-de-Churn

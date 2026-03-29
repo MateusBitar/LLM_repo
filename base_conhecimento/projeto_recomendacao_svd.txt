@@ -6,3 +6,5 @@
   2. Arquitetura e Deploy: Criou uma API REST para disponibilizar o modelo e separou as responsabilidades do código (treinamento, processamento e endpoints). O modelo foi salvo fisicamente (.pkl) para evitar retreinamento e reduzir a latência de startup. Todo o ambiente foi conteinerizado para evitar problemas de compatibilidade e compilação de pacotes.
 - Tecnologias Utilizadas: Python (3.10 slim), scikit-surprise (SVD para Machine Learning), FastAPI (criação e roteamento da API web), Uvicorn, Pickle (persistência do modelo) e Docker (containerização).
 - Entregas e Resultados: Entrega de uma API funcional e conteinerizada via Docker, totalmente documentada e pronta para deploy em servidores ou nuvem. O sistema é capaz de filtrar itens não avaliados e calcular predições personalizadas baseadas na equação de interação de fatores latentes ($\text{rating} \approx \text{viés}_{\text{global}} + \text{viés}_{\text{usuario}} + \text{viés}_{\text{item}} + (P \times Q^T)$), retornando em milissegundos os Top N itens mais recomendados para um usuário específico.
+
+- Link do Projeto: https://github.com/MateusBitar/recomendation-system

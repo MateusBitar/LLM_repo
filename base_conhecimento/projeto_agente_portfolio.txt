@@ -8,3 +8,5 @@
   4. Interface de Usuário (Front-end): Desenvolveu uma interface de chat moderna e responsiva utilizando Streamlit, com gerenciamento de estado de sessão (Session State) para manter o histórico e o contexto da conversa.
 - Tecnologias Utilizadas: Python, LangChain (Orquestração do RAG), ChromaDB (Banco Vetorial Local), Streamlit (Front-end/UI), Ollama (Inferência local de LLMs), Groq API (Inferência em nuvem de altíssima velocidade).
 - Entregas e Resultados: Entrega de um portfólio "vivo", escalável e interativo, hospedado na nuvem. O projeto demonstra domínio prático do ciclo completo de desenvolvimento de aplicações de Inteligência Artificial Generativa (GenAI), desde a vetorização de dados até a integração de APIs REST de alta performance e construção de interfaces interativas.
+
+- Link do Projeto: https://github.com/MateusBitar/LLM_repo

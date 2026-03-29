@@ -7,3 +7,5 @@
   3. Engenharia de Busca: Implementou índices vetoriais FAISS persistentes, com separação de índices por modelo, além de processamento automatizado de documentos PDF.
 - Tecnologias Utilizadas: Python, Streamlit (Interface Web), FAISS (Banco Vetorial de alta performance para similaridade), OpenAI API (gpt-4o-mini e embeddings text-embedding-3-small), HuggingFace Hub (Modelos open-source variados e embeddings multilingual-e5-large).
 - Entregas e Resultados: Entrega de um sistema conversacional modular e escalável, capaz de manter contexto de memória e gerar respostas cientificamente embasadas através da leitura autônoma de documentos em PDF. O projeto demonstra profundo conhecimento no ecossistema de LLMs modernos e na arquitetura de aplicações de IA generativa para o setor de saúde.
+
+- Link do Projeto: https://github.com/FelipeYoshidaCEUB/chatbot-ceub

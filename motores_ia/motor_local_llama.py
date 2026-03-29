@@ -31,12 +31,13 @@ def configurar_motor_local():
     retriever = vectorstore.as_retriever(search_kwargs={"k": 4})
     llm = OllamaLLM(model="llama3", temperature=0.0)
 
-    # 5. Criar o Prompt Blindado
+    # 5. Criar o Prompt Blindado (Com Regra de Links)
     system_prompt = (
         "Você é o assistente virtual do portfólio de Mateus Bitar. "
         "REGRA ABSOLUTA: VOCÊ SÓ PODE RESPONDER USANDO O CONTEXTO FORNECIDO ABAIXO. "
         "Se a resposta não estiver no contexto, diga EXATAMENTE: 'Desculpe, não tenho essa informação na minha base de dados atual. Por favor, confira o LinkedIn ou GitHub do Mateus.' "
         "NUNCA INVENTE projetos, tecnologias, diplomas ou anos de experiência. NUNCA deduza informações. "
+        "REGRA DE LINKS: Sempre que você citar, explicar ou mencionar um projeto do Mateus, você DEVE obrigatoriamente adicionar ao final da sua resposta a frase: 'Confira mais em: [inserir o link do projeto que está no contexto]'. "
         "RESPONDA SEMPRE EM PORTUGUÊS DO BRASIL. "
         "\n\nContexto recuperado dos documentos:\n{context}"
     )
