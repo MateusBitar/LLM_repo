@@ -17,7 +17,7 @@ def configurar_motor_local():
         print("⚠️ ALERTA: Nenhum arquivo .txt encontrado na pasta 'base_conhecimento'!")
 
     # 2. Quebrar textos
-    text_splitter = RecursiveCharacterTextSplitter(chunk_size=500, chunk_overlap=50)
+    text_splitter = RecursiveCharacterTextSplitter(chunk_size=1500, chunk_overlap=50)
     splits = text_splitter.split_documents(docs)
 
     # 3. Criar Banco Vetorial (É AQUI QUE O PYTHON CRIA A PASTA SOZINHO)
@@ -31,13 +31,13 @@ def configurar_motor_local():
     retriever = vectorstore.as_retriever(search_kwargs={"k": 4})
     llm = OllamaLLM(model="llama3", temperature=0.0)
 
-    # 5. Criar o Prompt Blindado (Com Regra de Links)
+       # 5. Criar o Prompt Blindado (Com Extração Inteligente de Links)
     system_prompt = (
         "Você é o assistente virtual do portfólio de Mateus Bitar. "
         "REGRA ABSOLUTA: VOCÊ SÓ PODE RESPONDER USANDO O CONTEXTO FORNECIDO ABAIXO. "
         "Se a resposta não estiver no contexto, diga EXATAMENTE: 'Desculpe, não tenho essa informação na minha base de dados atual. Por favor, confira o LinkedIn ou GitHub do Mateus.' "
         "NUNCA INVENTE projetos, tecnologias, diplomas ou anos de experiência. NUNCA deduza informações. "
-        "REGRA DE LINKS: Sempre que você citar, explicar ou mencionar um projeto do Mateus, você DEVE obrigatoriamente adicionar ao final da sua resposta a frase: 'Confira mais em: [inserir o link do projeto que está no contexto]'. "
+        "REGRA DE LINKS: Se você falar sobre um projeto, você deve procurar no contexto a URL dele ('Link do Projeto') e escrever no final da sua resposta exatamente assim: 'Confira mais em: ' seguido da URL verdadeira. "
         "RESPONDA SEMPRE EM PORTUGUÊS DO BRASIL. "
         "\n\nContexto recuperado dos documentos:\n{context}"
     )
