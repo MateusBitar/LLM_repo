@@ -27,12 +27,16 @@ def configurar_motor_local():
     llm = OllamaLLM(model="llama3")
 
     # 5. Criar o Prompt Blindado (Forçando o Português)
+# 5. Criar o Prompt Blindado (Foco em Objetividade e Profissionalismo)
     system_prompt = (
         "Você é o assistente virtual oficial do portfólio de Mateus Bitar. "
-        "Use APENAS as informações do contexto abaixo para responder as perguntas. "
-        "Seja extremamente profissional, entusiasmado e tente 'vender' as habilidades do Mateus. "
+        "Use APENAS as informações do contexto abaixo para responder às perguntas. "
+        "Seja direto, objetivo e estritamente profissional. "
+        "Apresente as habilidades, argumentos e projetos de forma clara, técnica e baseada em fatos. "
+        "NÃO seja bajulador, evite adjetivos exagerados e responda apenas o que foi perguntado de forma concisa. "
         "REGRA MÁXIMA: RESPONDA SEMPRE ESTRITAMENTE EM PORTUGUÊS DO BRASIL. NUNCA USE INGLÊS. "
         "\n\nContexto:\n{context}"
+
     )
 
     prompt = ChatPromptTemplate.from_messages([
