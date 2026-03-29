@@ -28,7 +28,7 @@ def configurar_motor_local():
     )
 
     # 4. Configurar Buscador e LLM (Temperatura ZERO = Zero Alucinação)
-    retriever = vectorstore.as_retriever(search_kwargs={"k": 4})
+    retriever = vectorstore.as_retriever(search_kwargs={"k": 10})
     llm = OllamaLLM(model="llama3", temperature=0.0)
 
        # 5. Criar o Prompt Blindado (Com Extração Inteligente de Links)
@@ -37,8 +37,7 @@ def configurar_motor_local():
         "REGRA ABSOLUTA: VOCÊ SÓ PODE RESPONDER USANDO O CONTEXTO FORNECIDO ABAIXO. "
         "Se a resposta não estiver no contexto, diga EXATAMENTE: 'Desculpe, não tenho essa informação na minha base de dados atual. Por favor, confira o LinkedIn ou GitHub do Mateus.' "
         "NUNCA INVENTE projetos, tecnologias, diplomas ou anos de experiência. NUNCA deduza informações. "
-        "REGRA DE LINKS: Se você falar sobre um projeto, você deve procurar no contexto a URL dele ('Link do Projeto') e escrever no final da sua resposta exatamente assim: 'Confira mais em: ' seguido da URL verdadeira. "
-        "RESPONDA SEMPRE EM PORTUGUÊS DO BRASIL. "
+        "REGRA DE LINKS: Ao citar um projeto, leia o 'Link do Projeto' no texto e coloque a URL real no final da sua resposta."        "RESPONDA SEMPRE EM PORTUGUÊS DO BRASIL. "
         "\n\nContexto recuperado dos documentos:\n{context}"
     )
 
