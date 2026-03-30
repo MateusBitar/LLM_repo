@@ -1,5 +1,8 @@
 # Projeto de Destaque: Assistente Virtual de Portfólio (Sistema RAG com LLMs e Nuvem)
-
+- Links do Projeto:
+  * Repositório (GitHub): https://github.com/MateusBitar/LLM_repo
+  * Aplicação Web (Deploy): https://portfolio-mateus.streamlit.app/
+  
 - O Desafio / Demanda: Inovar na apresentação profissional substituindo o formato estático e tradicional de um currículo/portfólio por uma experiência interativa. O objetivo era criar um Agente de Inteligência Artificial autônomo, disponível 24/7, capaz de conversar com recrutadores, ler os dados profissionais do Mateus, e "vender" suas habilidades técnicas e experiências de forma dinâmica e objetiva.
 - O que o Mateus fez (Ação e Arquitetura): Arquitetou e desenvolveu uma aplicação web completa baseada em RAG (Retrieval-Augmented Generation), focando em Engenharia de Software Modular e Design Patterns (Strategy Pattern).
   1. Base de Conhecimento e RAG: Criou uma estrutura de ingestão de dados em Markdown, onde a IA consome arquivos sobre experiências e projetos, quebra os textos (text splitters) e os converte em embeddings, armazenando-os em um banco de dados vetorial para buscas semânticas de alta precisão.
@@ -9,4 +12,3 @@
 - Tecnologias Utilizadas: Python, LangChain (Orquestração do RAG), ChromaDB (Banco Vetorial Local), Streamlit (Front-end/UI), Ollama (Inferência local de LLMs), Groq API (Inferência em nuvem de altíssima velocidade).
 - Entregas e Resultados: Entrega de um portfólio "vivo", escalável e interativo, hospedado na nuvem. O projeto demonstra domínio prático do ciclo completo de desenvolvimento de aplicações de Inteligência Artificial Generativa (GenAI), desde a vetorização de dados até a integração de APIs REST de alta performance e construção de interfaces interativas.
 
-- Link do Projeto: https://github.com/MateusBitar/LLM_repo

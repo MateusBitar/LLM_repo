@@ -1,4 +1,6 @@
 # Projeto de Destaque: Sistema de Recomendação com Filtragem Colaborativa (SVD) e FastAPI
+- Links do Projeto:
+  * Repositório (GitHub): https://github.com/MateusBitar/recomendation-system
 
 - O Desafio / Demanda: Construir uma arquitetura de recomendação de ponta a ponta, modular e escalável. O objetivo era criar um sistema capaz de prever as preferências dos usuários e sugerir itens com precisão, utilizando apenas dados de interação (matriz usuário-item), sem depender de características de conteúdo (como gênero ou descrição), garantindo que a solução estivesse pronta para ser colocada em produção de forma isolada e reproduzível.
 - O que o Mateus fez (Ação): Projetou e desenvolveu o ciclo completo de um sistema de recomendação. 
@@ -7,4 +9,3 @@
 - Tecnologias Utilizadas: Python (3.10 slim), scikit-surprise (SVD para Machine Learning), FastAPI (criação e roteamento da API web), Uvicorn, Pickle (persistência do modelo) e Docker (containerização).
 - Entregas e Resultados: Entrega de uma API funcional e conteinerizada via Docker, totalmente documentada e pronta para deploy em servidores ou nuvem. O sistema é capaz de filtrar itens não avaliados e calcular predições personalizadas baseadas na equação de interação de fatores latentes ($\text{rating} \approx \text{viés}_{\text{global}} + \text{viés}_{\text{usuario}} + \text{viés}_{\text{item}} + (P \times Q^T)$), retornando em milissegundos os Top N itens mais recomendados para um usuário específico.
 
-- Link do Projeto: https://github.com/MateusBitar/recomendation-system
