@@ -80,5 +80,5 @@ A aplicação estará disponível no seu navegador em `http://localhost:8501`.
 
 -----
 
-*Desenvolvido por **Mateus Bitar** - Conecte-se comigo no [LinkedIn](https://www.google.com/search?q=https://linkedin.com/in/mateus-bitar).*
+*Desenvolvido por **Mateus Bitar** - Conecte-se comigo no [LinkedIn](https://linkedin.com/in/mateus-bitar).*
 
