@@ -1,0 +1,17 @@
+# Ambientes Virtuais
+venv/
+env/
+.venv/
+
+# Variáveis de Ambiente e Senhas (NUNCA SUBIR)
+.env
+
+# Banco de Dados Vetorial Local (ChromaDB)
+# A nuvem vai gerar o próprio banco lá, não precisamos subir o nosso
+banco_vetorial_mateus/
+banco_vetorial_mateus_nuvem/
+
+# Cache do Python e Streamlit
+__pycache__/
+*.pyc
+.streamlit/

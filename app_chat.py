@@ -1,6 +1,7 @@
 import streamlit as st
 import os
-from motores_ia.motor_local_llama import configurar_motor_local
+#from motores_ia.motor_local_llama import configurar_motor_local
+from motores_ia.motor_nuvem_groq import configurar_motor_nuvem
 
 # 1. Configuração da Página
 st.set_page_config(page_title="Assistente do Mateus", page_icon="🤖", layout="wide")
@@ -40,7 +41,8 @@ st.markdown("Olá! Sou a IA treinada para falar sobre a experiência, automaçõ
 # 2. Cache da IA 
 @st.cache_resource
 def inicializar_ia():
-    return configurar_motor_local()
+    #return configurar_motor_local()
+    return configurar_motor_nuvem()
 
 retriever, chain = inicializar_ia()
 
