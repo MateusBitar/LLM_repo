@@ -41,10 +41,9 @@ retriever, chain = inicializar_ia()
 # ==========================================
 # 🗂️ CRIAÇÃO DAS ABAS PRINCIPAIS
 # ==========================================
-aba_chat, aba_repositorios, aba_aplicacoes = st.tabs([
+aba_chat, aba_projetos = st.tabs([
     "💬 Chat com a IA", 
-    "💻 Repositórios (Código)", 
-    "🌐 Aplicações (Deploys)"
+    "🚀 Meus Projetos"
 ])
 
 # ==========================================
@@ -84,25 +83,36 @@ with aba_chat:
             st.session_state.mensagens.append({"role": "assistant", "content": resposta})
 
 # ==========================================
-# ABA 2: APENAS LINKS DO GITHUB
+# ABA 2: PORTFÓLIO DE PROJETOS
 # ==========================================
-with aba_repositorios:
-    st.header("💻 Meus Códigos e Repositórios")
-    st.write("Acesse o código-fonte dos meus projetos diretamente no GitHub:")
-    
-    st.markdown("- 📊 **Previsão de Churn (XGBoost):** [Acessar Repositório](https://github.com/MateusBitar/Previsao-de-Churn)")
-    st.markdown("- 🧠 **Sistema de Recomendação (SVD):** [Acessar Repositório](https://github.com/MateusBitar/recomendation-system)")
-    st.markdown("- 🤖 **Motor IA deste Portfólio (RAG):** [Acessar Repositório](https://github.com/MateusBitar/LLM_repo)")
-    st.markdown("- 🎓 **Chatbot Nascentia (TCC em Grupo):** [Acessar Repositório](https://github.com/FelipeYoshidaCEUB/chatbot-ceub)")
+with aba_projetos:
+    st.header("🚀 Portfólio de Projetos")
+    st.write("Conheça as soluções que desenvolvi, acesse os códigos-fonte e teste as aplicações em produção:")
+    st.markdown("<br>", unsafe_allow_html=True) # Espaçamento extra
 
-# ==========================================
-# ABA 3: APENAS LINKS DE APLICAÇÕES WEB
-# ==========================================
-with aba_aplicacoes:
-    st.header("🌐 Projetos em Produção")
-    st.write("Teste as aplicações reais rodando em nuvem:")
-    
-    st.markdown("- 📉 **App: Retenção Inteligente (Churn):** [Testar Aplicação](https://previsao-de-churn.streamlit.app/)")
-    
-    # Lembre-se de colar a URL pública real que você gerou no Streamlit Cloud na linha abaixo:
-    st.markdown("- 🤖 **App: Assistente de Portfólio IA:** [Testar Aplicação](COLOQUE_A_URL_DO_SEU_PORTFOLIO_AQUI)")
+    st.subheader("🤖 Assistente de Portfólio Inteligente (RAG & GenAI)")
+    st.markdown("Aplicação conversacional utilizando LLMs de ponta (Llama 3.3 70B) e banco de dados vetorial para entrevistas interativas.")
+    st.markdown("- 💻 [Repositório no GitHub](https://github.com/MateusBitar/LLM_repo)")
+    # Troque a URL abaixo pelo link real do seu Streamlit Cloud
+    st.markdown("- 🌐 [Testar Aplicação Web](COLOQUE_A_URL_DO_SEU_PORTFOLIO_AQUI)")
+    st.divider()
+
+    st.subheader("📉 Retenção Inteligente (Previsão de Churn com XGBoost)")
+    st.markdown("Modelo preditivo de Machine Learning para identificar precocemente clientes com alto risco de evasão em mercados competitivos.")
+    st.markdown("- 💻 [Repositório no GitHub](https://github.com/MateusBitar/Previsao-de-Churn)")
+    st.markdown("- 🌐 [Testar Aplicação Web](https://previsao-de-churn.streamlit.app/)")
+    st.divider()
+
+    st.subheader("🧠 Sistema de Recomendação (SVD)")
+    st.markdown("Motor de recomendação personalizado focado em sugerir itens com base no comportamento histórico do usuário.")
+    st.markdown("- 💻 [Repositório no GitHub](https://github.com/MateusBitar/recomendation-system)")
+    st.divider()
+
+    st.subheader("🎓 Chatbot Nascentia (TCC em Grupo)")
+    st.markdown("Assistente virtual baseado em RAG para auxiliar na consulta de informações acadêmicas e institucionais, integrando LangChain e Hugging Face.")
+    st.markdown("- 💻 [Repositório no GitHub](https://github.com/FelipeYoshidaCEUB/chatbot-ceub)")
+    st.divider()
+
+    st.subheader("⚖️ Sistema de Clipping Jurídico (Legal-tech)")
+    st.markdown("Serviço automatizado de varredura, sumarização (NLP) e envio de atualizações legislativas para escritórios de advocacia.")
+    st.markdown("- 🚧 *Em desenvolvimento ativo.*")
