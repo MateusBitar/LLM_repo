@@ -19,7 +19,7 @@ st.markdown("""
 # 🎨 BARRA LATERAL FIXA (Contatos e Projetos)
 # ==========================================
 with st.sidebar:
-    st.image("https://github.com/MateusBitar.png", width=100) # Ícone de perfil
+    st.image("https://github.com/MateusBitar.png", width=150) # Ícone de perfil
     st.header("Mateus Bitar")
     st.markdown("**Full Stack Developer & Data Science**")
     
