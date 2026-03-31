@@ -14,4 +14,3 @@ banco_vetorial_mateus_nuvem/
 # Cache do Python e Streamlit
 __pycache__/
 *.pyc
-.streamlit/
