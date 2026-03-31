@@ -5,11 +5,21 @@ from motores_ia.motor_nuvem_groq import configurar_motor_nuvem
 # 1. Configuração da Página (DEVE SER O PRIMEIRO COMANDO DO STREAMLIT)
 st.set_page_config(page_title="Assistente do Mateus", page_icon="🤖", layout="wide")
 
+
+# Injeta CSS para deixar a imagem da barra lateral redonda
+st.markdown("""
+    <style>
+        [data-testid="stSidebar"] img {
+            border-radius: 50%;
+        }
+    </style>
+""", unsafe_allow_html=True)
+
 # ==========================================
 # 🎨 BARRA LATERAL FIXA (Contatos e Projetos)
 # ==========================================
 with st.sidebar:
-    st.image("https://cdn-icons-png.flaticon.com/512/3135/3135715.png", width=100) # Ícone de perfil
+    st.image("https://github.com/MateusBitar.png", width=100) # Ícone de perfil
     st.header("Mateus Bitar")
     st.markdown("**Full Stack Developer & Data Science**")
     
@@ -20,17 +30,7 @@ with st.sidebar:
     st.markdown("💻 [GitHub](https://github.com/MateusBitar)")
     st.markdown("📧 [E-mail](mailto:mateusrbitar@gmail.com)")
     
-    st.divider()
-    
-    st.subheader("🚀 Acesso Rápido")
-    # Lê o arquivo de projetos e plota na tela
-    try:
-        with open("./base_conhecimento/links_projetos.txt", "r", encoding="utf-8") as file:
-            links = file.read()
-            st.markdown(links)
-    except FileNotFoundError:
-        st.caption("Adicione o arquivo links_projetos.txt na base de conhecimento para ver os links aqui.")
-
+ 
 # 2. Cache e Inicialização da IA 
 @st.cache_resource
 def inicializar_ia():
