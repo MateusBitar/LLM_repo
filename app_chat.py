@@ -53,35 +53,47 @@ with aba_chat:
     st.title("🤖 Assistente de Portfólio")
     st.markdown("Olá! Sou a IA treinada para falar sobre a experiência, automações e projetos de dados do Mateus. O que você gostaria de saber?")
 
-    # Gerenciamento do Histórico de Chat
+    # 1. Cria um container invisível exclusivo para as mensagens
+    container_mensagens = st.container()
+
+    # Inicializa o histórico se não existir
     if "mensagens" not in st.session_state:
         st.session_state.mensagens = []
 
-    for msg in st.session_state.mensagens:
-        with st.chat_message(msg["role"]):
-            st.markdown(msg["content"])
+    # 2. Renderiza o histórico DENTRO do container
+    with container_mensagens:
+        for msg in st.session_state.mensagens:
+            with st.chat_message(msg["role"]):
+                st.markdown(msg["content"])
 
-    # Caixa de texto e processamento
+    # 3. Caixa de texto (Fica FORA do container, ou seja, sempre abaixo)
     if prompt_usuario := st.chat_input("Pergunte sobre as habilidades e projetos do Mateus..."):
+        
+        # Salva a mensagem do usuário na memória
         st.session_state.mensagens.append({"role": "user", "content": prompt_usuario})
-        with st.chat_message("user"):
-            st.markdown(prompt_usuario)
-            
-        with st.chat_message("assistant"):
-            placeholder = st.empty()
-            placeholder.markdown("🧠 Consultando a base de dados...")
-            
-            documentos = retriever.invoke(prompt_usuario)
-            textos_juntos = "\n\n".join([doc.page_content for doc in documentos])
-            
-            resposta = chain.invoke({
-                "context": textos_juntos,
-                "input": prompt_usuario
-            })
-            
-            placeholder.markdown(resposta)
-            st.session_state.mensagens.append({"role": "assistant", "content": resposta})
-
+        
+        # 4. Renderiza as NOVAS mensagens DENTRO do mesmo container para não descerem
+        with container_mensagens:
+            with st.chat_message("user"):
+                st.markdown(prompt_usuario)
+                
+            with st.chat_message("assistant"):
+                placeholder = st.empty()
+                placeholder.markdown("🧠 Consultando a base de dados...")
+                
+                # Busca e processamento
+                documentos = retriever.invoke(prompt_usuario)
+                textos_juntos = "\n\n".join([doc.page_content for doc in documentos])
+                
+                resposta = chain.invoke({
+                    "context": textos_juntos,
+                    "input": prompt_usuario
+                })
+                
+                placeholder.markdown(resposta)
+                
+        # Salva a resposta da IA na memória
+        st.session_state.mensagens.append({"role": "assistant", "content": resposta})
 # ==========================================
 # ABA 2: PORTFÓLIO DE PROJETOS
 # ==========================================

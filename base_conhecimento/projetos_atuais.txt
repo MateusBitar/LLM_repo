@@ -1,6 +1,6 @@
 Projetos Atuais e em Desenvolvimento de Mateus Bitar
 
-1. Assistente de Portfólio Inteligente (RAG & GenAI)
+1. PROJETO ATUAL: Assistente de Portfólio Inteligente (RAG & GenAI)
 Descrição: É o assistente com o qual você está interagindo agora. Trata-se de uma aplicação de Inteligência Artificial Generativa que utiliza a arquitetura RAG (Retrieval-Augmented Generation) para fornecer informações precisas sobre a trajetória do Mateus.
 Tecnologias: Python, LangChain, Groq API (Llama 3.3 70B), Hugging Face Embeddings e ChromaDB.
 Destaque: O sistema foi desenhado para eliminar alucinações da IA, garantindo que as respostas sejam baseadas estritamente nos dados reais de carreira e projetos do Mateus.
@@ -8,7 +8,7 @@ Destaque: O sistema foi desenhado para eliminar alucinações da IA, garantindo 
   * Repositório (GitHub): https://github.com/MateusBitar/LLM_repo
   * Aplicação (Deploy): https://mateusbitar-portfolio.streamlit.app/
 
-2. Sistema de Clipping Jurídico e Newsletter (Legal-tech)
+2. PROJETO EM ANDAMENTO: Sistema de Clipping Jurídico e Newsletter (Legal-tech)
 Descrição: Um serviço automatizado voltado para sistemas jurídicos que realiza a varredura, coleta e sumarização de atualizações legislativas e clipping de notícias jurídicas relevantes. O projeto visa entregar uma newsletter personalizada e filtrada por temas de interesse para advogados e escritórios de advocacia.
 Tecnologias: Python (Scraping e Automação), Processamento de Linguagem Natural (NLP) para sumarização de textos e integração com APIs de envio de e-mail.
 Status: Em desenvolvimento ativo, focado na escalabilidade do processamento de dados jurídicos e na precisão dos filtros de relevância.
