@@ -99,15 +99,15 @@ with aba_chat:
                 # ==========================================
                 # 💡 O CAVALO DE TROIA DO IDIOMA
                 # ==========================================
+
                 comando_oculto = (
-                    f"CRITICAL RULE: You must answer in the EXACT SAME LANGUAGE as the following question. "
-                    f"If the question is in English, reply 100% in English. "
-                    f"Question: {prompt_usuario}"
+                    f"Analyze the language of this prompt and REPLY ENTIRELY IN THAT SAME LANGUAGE. "
+                    f"Prompt: {prompt_usuario}"
                 )
                 
                 resposta = chain.invoke({
                     "context": textos_juntos,
-                    "input": comando_oculto # <-- A IA recebe a regra + a pergunta
+                    "input": comando_oculto
                 })
                 # ==========================================
                 

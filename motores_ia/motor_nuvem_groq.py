@@ -7,6 +7,7 @@ from langchain_core.prompts import ChatPromptTemplate
 import os
 from dotenv import load_dotenv
 from langchain_core.output_parsers import StrOutputParser
+import streamlit as st
 
 load_dotenv()
 
@@ -15,7 +16,7 @@ chave_groq = os.getenv("GROQ_API_KEY")
 chave_hf = os.getenv("HUGGINGFACEHUB_API_TOKEN")
 
 
-
+@st.cache_resource
 def configurar_motor_nuvem():
     print("☁️ Ligando o Motor de Nuvem: Groq (Llama 3 70B) + HF Embeddings...")
     
@@ -34,7 +35,7 @@ def configurar_motor_nuvem():
     # ==========================================
     # 🔒 CADEADO DO BANCO DE DADOS VETORIAL
     # ==========================================
-    diretorio_banco = "./banco_vetorial_final"
+    diretorio_banco = "./banco_vetorial_v4"
 
     if os.path.exists(diretorio_banco):
         # Se a pasta já existe, apenas CARREGA o banco (não duplica os textos)
