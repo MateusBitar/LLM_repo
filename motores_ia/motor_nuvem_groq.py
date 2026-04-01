@@ -62,6 +62,7 @@ def configurar_motor_nuvem():
         "NEVER reply in Portuguese if the user asked in English!"
     )
 
+
     prompt = ChatPromptTemplate.from_messages([
         ("system", system_prompt),
         ("human", "{input}")
