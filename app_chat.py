@@ -82,8 +82,19 @@ with aba_chat:
                 placeholder.markdown("🧠 Consultando a base de dados...")
                 
                 # Busca e processamento
+                # Busca e processamento
                 documentos = retriever.invoke(prompt_usuario)
                 textos_juntos = "\n\n".join([doc.page_content for doc in documentos])
+                
+                # ==========================================
+                # 🛠️ MODO DETETIVE: RAIO-X DO QUE A IA LÊ
+                # ==========================================
+                with st.expander("🕵️‍♂️ Debug: O que a IA está lendo nos bastidores?"):
+                    st.markdown("**1. O Contexto Puxado do Banco (textos_juntos):**")
+                    st.write(textos_juntos)
+                    st.markdown("**2. O Comando Final (input):**")
+                    st.write(prompt_usuario) # ou comando_oculto, se estiver usando
+                # ==========================================
                 
                 # ==========================================
                 # 💡 O CAVALO DE TROIA DO IDIOMA
