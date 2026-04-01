@@ -31,14 +31,26 @@ def configurar_motor_nuvem():
  # 3. Criar Banco Vetorial (Processamento de Embeddings via HuggingFace)
     embeddings = HuggingFaceEmbeddings(model_name="intfloat/multilingual-e5-large")
     
-    vectorstore = Chroma.from_documents(
-        documents=splits,
-        embedding=embeddings,
-        persist_directory="./banco_vetorial_v3" # <-- MUDE O NOME AQUI
-    )
-    
+    # ==========================================
+    # 🔒 CADEADO DO BANCO DE DADOS VETORIAL
+    # ==========================================
+    diretorio_banco = "./banco_vetorial_final"
 
-    # 4. Buscador e LLM (Groq Llama 3 70B com temperatura ZERO)
+    if os.path.exists(diretorio_banco):
+        # Se a pasta já existe, apenas CARREGA o banco (não duplica os textos)
+        vectorstore = Chroma(
+            persist_directory=diretorio_banco, 
+            embedding_function=embeddings
+        )
+    else:
+        # Se não existe, LÊ os arquivos .txt e CRIA o banco do zero
+        vectorstore = Chroma.from_documents(
+            documents=splits,
+            embedding=embeddings,
+            persist_directory=diretorio_banco
+        )
+
+    # Buscar os 5 trechos mais relevantes
     retriever = vectorstore.as_retriever(search_kwargs={"k": 5})
     llm = ChatGroq(model_name="llama-3.3-70b-versatile", temperature=0.0)
 
