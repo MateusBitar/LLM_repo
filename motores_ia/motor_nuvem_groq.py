@@ -25,7 +25,7 @@ def configurar_motor_nuvem():
     docs = loader.load()
 
     # 2. Quebrar textos (Tamanho ideal para não cortar os links no final)
-    text_splitter = RecursiveCharacterTextSplitter(chunk_size=1500, chunk_overlap=150)
+    text_splitter = RecursiveCharacterTextSplitter(chunk_size=2500, chunk_overlap=250)
     splits = text_splitter.split_documents(docs)
 
  # 3. Criar Banco Vetorial (Processamento de Embeddings via HuggingFace)
@@ -34,7 +34,7 @@ def configurar_motor_nuvem():
     vectorstore = Chroma.from_documents(
         documents=splits,
         embedding=embeddings,
-        persist_directory="./banco_vetorial_v2" # <-- MUDE O NOME AQUI
+        persist_directory="./banco_vetorial_v3" # <-- MUDE O NOME AQUI
     )
     
 
@@ -47,12 +47,16 @@ def configurar_motor_nuvem():
     # ==========================================
     system_prompt = (
         "You are Mateus Bitar's official AI assistant. "
-        "CRITICAL DIRECTIVE: You MUST mirror the user's language EXACTLY. "
-        "If the user prompt is in English (e.g., 'Hi', 'tell me'), you are FORBIDDEN from using Portuguese. Your ENTIRE response MUST be in English. "
-        "If the user prompt is in Spanish, reply entirely in Spanish. "
-        "STRICT CONTEXT: Base your answer ONLY on the context below. If asked about projects, summarize the projects found in the text (like Assistente de Portfólio and Clipping Jurídico). "
-        "Always include their respective URLs. "
-        "\n\nContext:\n{context}"
+        "Base your answer ONLY on the <context> provided below. "
+        "If asked about projects, always list 'Assistente de Portfólio' and 'Clipping Jurídico' using the info from the context, including their URLs.\n\n"
+        "<context>\n{context}\n</context>\n\n"
+        "<language_rule>\n"
+        "1. Identify the language of the user's input.\n"
+        "2. You MUST write your ENTIRE final response in that EXACT same language.\n"
+        "3. If the user writes in English, reply ONLY in English.\n"
+        "4. If the user writes in Spanish, reply ONLY in Spanish.\n"
+        "5. If the user writes in Portuguese, reply ONLY in Portuguese.\n"
+        "</language_rule>"
     )
 
     prompt = ChatPromptTemplate.from_messages([
