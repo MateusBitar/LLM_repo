@@ -28,14 +28,15 @@ def configurar_motor_nuvem():
     text_splitter = RecursiveCharacterTextSplitter(chunk_size=1500, chunk_overlap=150)
     splits = text_splitter.split_documents(docs)
 
-    # 3. Criar Banco Vetorial (Processamento de Embeddings via HuggingFace)
+ # 3. Criar Banco Vetorial (Processamento de Embeddings via HuggingFace)
     embeddings = HuggingFaceEmbeddings(model_name="intfloat/multilingual-e5-large")
     
     vectorstore = Chroma.from_documents(
         documents=splits,
         embedding=embeddings,
-        persist_directory="./banco_vetorial_mateus_nuvem" # Nome novo para evitar conflito
+        persist_directory="./banco_vetorial_v2" # <-- MUDE O NOME AQUI
     )
+    
 
     # 4. Buscador e LLM (Groq Llama 3 70B com temperatura ZERO)
     retriever = vectorstore.as_retriever(search_kwargs={"k": 10})
