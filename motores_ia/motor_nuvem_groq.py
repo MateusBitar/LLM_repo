@@ -42,7 +42,9 @@ def configurar_motor_nuvem():
     retriever = vectorstore.as_retriever(search_kwargs={"k": 10})
     llm = ChatGroq(model_name="llama-3.3-70b-versatile", temperature=0.0)
 
-    # 5. Prompt Blindado
+# ==========================================
+    # 5. Configuração do Prompt Multilíngue
+    # ==========================================
     system_prompt = (
         "Você é o assistente virtual do portfólio de Mateus Bitar. "
         "REGRA ABSOLUTA: RESPONDA APENAS USANDO O CONTEXTO FORNECIDO. "
@@ -59,11 +61,10 @@ def configurar_motor_nuvem():
         "5. Se o usuário perguntar em Português, responda em Português.\n"
         "NEVER reply in Portuguese if the user asked in English!"
     )
-    )
 
     prompt = ChatPromptTemplate.from_messages([
         ("system", system_prompt),
-        ("human", "{input}"),
+        ("human", "{input}")
     ])
 
     # O filtro vai pegar o objeto feio do Groq e devolver só o texto bonito
