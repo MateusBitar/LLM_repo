@@ -59,7 +59,7 @@ def configurar_motor_nuvem():
         "5. Se o usuário perguntar em Português, responda em Português.\n"
         "NEVER reply in Portuguese if the user asked in English!"
     )
-    )
+    
 
     prompt = ChatPromptTemplate.from_messages([
         ("system", system_prompt),
