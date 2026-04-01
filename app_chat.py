@@ -85,10 +85,20 @@ with aba_chat:
                 documentos = retriever.invoke(prompt_usuario)
                 textos_juntos = "\n\n".join([doc.page_content for doc in documentos])
                 
+                # ==========================================
+                # 💡 O CAVALO DE TROIA DO IDIOMA
+                # ==========================================
+                comando_oculto = (
+                    f"CRITICAL RULE: You must answer in the EXACT SAME LANGUAGE as the following question. "
+                    f"If the question is in English, reply 100% in English. "
+                    f"Question: {prompt_usuario}"
+                )
+                
                 resposta = chain.invoke({
                     "context": textos_juntos,
-                    "input": prompt_usuario
+                    "input": comando_oculto # <-- A IA recebe a regra + a pergunta
                 })
+                # ==========================================
                 
                 placeholder.markdown(resposta)
                 
