@@ -31,24 +31,14 @@ def configurar_motor_nuvem():
 
  # 3. Criar Banco Vetorial (Processamento de Embeddings via HuggingFace)
     embeddings = HuggingFaceEmbeddings(model_name="intfloat/multilingual-e5-large")
-    
-    # ==========================================
-    # 🔒 CADEADO DO BANCO DE DADOS VETORIAL
-    # ==========================================
-    diretorio_banco = "./banco_vetorial_v4"
-
-    if os.path.exists(diretorio_banco):
-        # Se a pasta já existe, apenas CARREGA o banco (não duplica os textos)
-        vectorstore = Chroma(
-            persist_directory=diretorio_banco, 
-            embedding_function=embeddings
-        )
-    else:
-        # Se não existe, LÊ os arquivos .txt e CRIA o banco do zero
-        vectorstore = Chroma.from_documents(
-            documents=splits,
-            embedding=embeddings,
-            persist_directory=diretorio_banco
+        
+        # ==========================================
+        # 1. BANCO DE DADOS EM RAM (Adeus Duplicações!)
+        # Removemos o 'persist_directory'. O banco agora nasce limpo e rápido na memória.
+        # ==========================================
+    vectorstore = Chroma.from_documents(
+        documents=splits,
+        embedding=embeddings
         )
 
     # Buscar os 5 trechos mais relevantes

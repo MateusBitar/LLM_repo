@@ -96,18 +96,10 @@ with aba_chat:
                     st.write(prompt_usuario) # ou comando_oculto, se estiver usando
                 # ==========================================
                 
-                # ==========================================
-                # 💡 O CAVALO DE TROIA DO IDIOMA
-                # ==========================================
-
-                comando_oculto = (
-                    f"Analyze the language of this prompt and REPLY ENTIRELY IN THAT SAME LANGUAGE. "
-                    f"Prompt: {prompt_usuario}"
-                )
                 
                 resposta = chain.invoke({
                     "context": textos_juntos,
-                    "input": comando_oculto
+                    "input": prompt_usuario
                 })
                 # ==========================================
                 
