@@ -6,3 +6,4 @@ langchain-groq
 langchain-huggingface
 sentence-transformers
 python-dotenv
+protobuf
