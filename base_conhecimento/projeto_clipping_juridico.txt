@@ -1,0 +1,21 @@
+# Sistema de Clipping Jurídico e Newsletter (Legal-tech)
+
+## Status do projeto
+Este projeto está EM DESENVOLVIMENTO ATIVO (não é produto finalizado em produção para clientes externos). Objetivos, prazos e escopo podem evoluir. Use as informações abaixo como descrição da linha de trabalho atual do Mateus Bitar.
+
+## O que é
+Serviço automatizado voltado ao contexto jurídico que realiza varredura, coleta e sumarização de atualizações legislativas e clipping de notícias jurídicas relevantes. A meta é entregar uma newsletter personalizada e filtrada por temas de interesse para advogados e escritórios de advocacia.
+
+## Stack e técnicas
+- Python (scraping e automação de coleta)
+- Processamento de Linguagem Natural (NLP) para sumarização de textos
+- Integração com APIs de envio de e-mail
+
+## Foco atual do desenvolvimento
+Escalabilidade do processamento de dados jurídicos e precisão dos filtros de relevância (o que entra na newsletter e com qual prioridade).
+
+## Papel do Mateus
+Arquiteto do sistema e desenvolvedor principal, unindo automação (incluindo visão de RPA) e Ciência de Dados para lidar com grandes volumes de informação.
+
+## Links
+Não há repositório público ou deploy divulgado nesta fase; tratar como projeto em construção. Quando houver link oficial, deve ser adicionado neste documento e no índice de projetos atuais.
