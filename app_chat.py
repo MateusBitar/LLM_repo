@@ -63,10 +63,30 @@ aba_chat, aba_projetos = st.tabs([
 with aba_chat:
     st.title("🤖 Assistente de Portfólio")
     st.markdown("Olá! Sou a IA treinada para falar sobre a experiência, automações e projetos de dados do Mateus. O que você gostaria de saber?")
-    arquivos_na_nuvem = os.listdir('./base_conhecimento')
-    st.error(f"📂 ARQUIVOS QUE A NUVEM ESTÁ LENDO: {arquivos_na_nuvem}")
+
+    arquivos_na_nuvem = sorted(os.listdir(_BASE_DIR))
+    txt_na_pasta = [f for f in arquivos_na_nuvem if f.endswith(".txt")]
+    fontes_ingest = ingest_metrics.get("fontes_ingeridas", [])
+    faltando_ingest = sorted(set(txt_na_pasta) - set(fontes_ingest))
+    extras_ingest = sorted(set(fontes_ingest) - set(txt_na_pasta))
+
+    with st.expander("Diagnóstico de deploy (ingestão vs disco)", expanded=False):
+        st.markdown(f"**{rotulo_deploy()}**")
+        st.write("Arquivos `.txt` em `base_conhecimento/` (disco):", txt_na_pasta)
+        st.write("Fontes carregadas pelo `DirectoryLoader` (ingestão):", fontes_ingest)
+        st.write("Chunks por arquivo (ingestão):", ingest_metrics.get("chunks_por_arquivo"))
+        st.write(
+            "Retriever:",
+            ingest_metrics.get("retriever_search_type"),
+            f"k={ingest_metrics.get('retriever_k')}, fetch_k={ingest_metrics.get('retriever_fetch_k')}",
+        )
+        st.write("Diretório absoluto usado pelo motor:", ingest_metrics.get("diretorio_base"))
+        if faltando_ingest:
+            st.warning(f"Arquivos no disco mas não listados na ingestão: {faltando_ingest}")
+        if extras_ingest:
+            st.warning(f"Ingestão lista fontes que não batem com listdir (anomalia): {extras_ingest}")
+
     # ===============================
-    
     # 1. Cria um container invisível exclusivo para as mensagens
     container_mensagens = st.container()
 
