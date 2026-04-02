@@ -32,17 +32,22 @@ def configurar_motor_nuvem():
  # 3. Criar Banco Vetorial (Processamento de Embeddings via HuggingFace)
     embeddings = HuggingFaceEmbeddings(model_name="intfloat/multilingual-e5-large")
         
-        # ==========================================
-        # 1. BANCO DE DADOS EM RAM (Adeus Duplicações!)
-        # Removemos o 'persist_directory'. O banco agora nasce limpo e rápido na memória.
-        # ==========================================
+    # BANCO DE DADOS EM RAM
     vectorstore = Chroma.from_documents(
         documents=splits,
         embedding=embeddings
-        )
+    )
 
-    # Buscar os 5 trechos mais relevantes
-    retriever = vectorstore.as_retriever(search_kwargs={"k": 5})
+    # ==========================================
+    # 🧠 ALGORITMO MMR (Adeus textos repetidos!)
+    # fetch_k=15: Ele lê 15 blocos nos bastidores.
+    # k=5: E devolve apenas os 5 MAIS DIFERENTES entre si.
+    # ==========================================
+    retriever = vectorstore.as_retriever(
+        search_type="mmr", 
+        search_kwargs={"k": 5, "fetch_k": 15}
+    )
+    
     llm = ChatGroq(model_name="llama-3.3-70b-versatile", temperature=0.0)
 
 # ==========================================
@@ -64,7 +69,7 @@ def configurar_motor_nuvem():
 
     prompt = ChatPromptTemplate.from_messages([
         ("system", system_prompt),
-        ("human", "{input}")
+        ("human", "Question: {input}\n\n[CRITICAL DIRECTIVE: You MUST evaluate the language of the Question above. Your ENTIRE reply MUST be translated to that exact same language. Do NOT use Portuguese if the question is in English.]")
     ])
 
     # O filtro vai pegar o objeto feio do Groq e devolver só o texto bonito
