@@ -18,4 +18,5 @@ Escalabilidade do processamento de dados jurídicos e precisão dos filtros de r
 Arquiteto do sistema e desenvolvedor principal, unindo automação (incluindo visão de RPA) e Ciência de Dados para lidar com grandes volumes de informação.
 
 ## Links
-Não há repositório público ou deploy divulgado nesta fase; tratar como projeto em construção. Quando houver link oficial, deve ser adicionado neste documento e no índice de projetos atuais.
+- Repositório (GitHub): https://github.com/MateusBitar/Clipping_juridico — criado como ponto de referência; o repositório pode estar vazio ou em estágio inicial enquanto o código é desenvolvido.
+- Deploy público: ainda não divulgado nesta fase.

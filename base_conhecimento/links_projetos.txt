@@ -3,3 +3,4 @@
 * [Previsão de Churn (XGBoost)](https://github.com/MateusBitar/Previsao-de-Churn)
 * [Sistema de Recomendação (SVD)](https://github.com/MateusBitar/recomendation-system)
 * [Chatbot RAG Nascentia (TCC)](https://github.com/FelipeYoshidaCEUB/chatbot-ceub)
+* [Clipping Jurídico (Legal-tech, em desenvolvimento)](https://github.com/MateusBitar/Clipping_juridico)

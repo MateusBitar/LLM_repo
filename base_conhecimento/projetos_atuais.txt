@@ -8,4 +8,6 @@ Aplicação conversacional com RAG para responder sobre carreira e projetos do M
 - Deploy: https://mateusbitar-portfolio.streamlit.app/
 
 ## 2. Sistema de Clipping Jurídico e Newsletter (Legal-tech)
-Em desenvolvimento ativo: automação de coleta, sumarização (NLP) e newsletter jurídica segmentada. Detalhes completos, aviso de WIP e papel do Mateus: arquivo projeto_clipping_juridico.txt (mesma base de conhecimento).
+Em desenvolvimento ativo: automação de coleta, sumarização (NLP) e newsletter jurídica segmentada.
+- Repositório: https://github.com/MateusBitar/Clipping_juridico
+- Detalhes completos e aviso de WIP: arquivo projeto_clipping_juridico.txt (mesma base de conhecimento).
