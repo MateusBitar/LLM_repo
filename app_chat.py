@@ -1,6 +1,14 @@
-import streamlit as st
 import os
+from collections import Counter
+from pathlib import Path
+
+import streamlit as st
+
+from deploy_info import rotulo_deploy
 from motores_ia.motor_nuvem_groq import configurar_motor_nuvem
+
+_REPO_ROOT = Path(__file__).resolve().parent
+_BASE_DIR = _REPO_ROOT / "base_conhecimento"
 
 # 1. Configuração da Página (DEVE SER O PRIMEIRO COMANDO DO STREAMLIT)
 st.set_page_config(page_title="Assistente do Mateus", page_icon="🤖", layout="wide")
@@ -29,14 +37,17 @@ with st.sidebar:
     st.markdown("👔 [LinkedIn](https://linkedin.com/in/mateus-bitar)")
     st.markdown("💻 [GitHub](https://github.com/MateusBitar)")
     st.markdown("📧 [E-mail](mailto:mateusrbitar@gmail.com)")
-    
- 
-# 2. Cache e Inicialização da IA 
+
+    st.divider()
+    st.caption(rotulo_deploy())
+    st.caption("Compare este SHA com o último commit no GitHub (Manage app → último deploy).")
+
+# 2. Cache e Inicialização da IA (único @st.cache_resource — invalida junto com o processo no redeploy)
 @st.cache_resource
 def inicializar_ia():
     return configurar_motor_nuvem()
 
-retriever, chain = inicializar_ia()
+retriever, chain, ingest_metrics = inicializar_ia()
 
 # ==========================================
 # 🗂️ CRIAÇÃO DAS ABAS PRINCIPAIS
@@ -93,10 +104,18 @@ with aba_chat:
                 # 🛠️ MODO DETETIVE: RAIO-X DO QUE A IA LÊ
                 # ==========================================
                 with st.expander("🕵️‍♂️ Debug: O que a IA está lendo nos bastidores?"):
+                    fontes_recuperadas = [
+                        os.path.basename(d.metadata.get("source", "?")) for d in documentos
+                    ]
+                    st.markdown("**0. Rastreio disco → ingestão → recuperação**")
+                    st.write("Arquivos `.txt` no disco:", txt_na_pasta)
+                    st.write("Chunks por arquivo (ingestão):", ingest_metrics.get("chunks_por_arquivo"))
+                    st.write("Fonte de cada chunk recuperado (ordem MMR):", fontes_recuperadas)
+                    st.write("Contagem por fonte (recuperação):", dict(Counter(fontes_recuperadas)))
                     st.markdown("**1. O Contexto Puxado do Banco (textos_juntos):**")
                     st.write(textos_juntos)
                     st.markdown("**2. O Comando Final (input):**")
-                    st.write(prompt_usuario) # ou comando_oculto, se estiver usando
+                    st.write(prompt_usuario)
                 # ==========================================
                 
                 

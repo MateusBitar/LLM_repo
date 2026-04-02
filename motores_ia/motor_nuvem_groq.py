@@ -1,58 +1,61 @@
-from langchain_community.document_loaders import DirectoryLoader, TextLoader
-from langchain_text_splitters import RecursiveCharacterTextSplitter
+from collections import Counter
+import os
+from pathlib import Path
+
+from dotenv import load_dotenv
 from langchain_chroma import Chroma
+from langchain_community.document_loaders import DirectoryLoader, TextLoader
+from langchain_core.output_parsers import StrOutputParser
+from langchain_core.prompts import ChatPromptTemplate
 from langchain_groq import ChatGroq
 from langchain_huggingface import HuggingFaceEmbeddings
-from langchain_core.prompts import ChatPromptTemplate
-import os
-from dotenv import load_dotenv
-from langchain_core.output_parsers import StrOutputParser
-import streamlit as st
+from langchain_text_splitters import RecursiveCharacterTextSplitter
 
 load_dotenv()
-
 
 chave_groq = os.getenv("GROQ_API_KEY")
 chave_hf = os.getenv("HUGGINGFACEHUB_API_TOKEN")
 
+_REPO_ROOT = Path(__file__).resolve().parent.parent
+_BASE_CONHECIMENTO = _REPO_ROOT / "base_conhecimento"
 
-@st.cache_resource
+
 def configurar_motor_nuvem():
     print("☁️ Ligando o Motor de Nuvem: Groq (Llama 3 70B) + HF Embeddings...")
-    
 
-    # 1. Carregar documentos
-    loader = DirectoryLoader('./base_conhecimento', glob="**/*.txt", loader_cls=TextLoader, loader_kwargs={'encoding': 'utf-8'})
+    loader = DirectoryLoader(
+        str(_BASE_CONHECIMENTO),
+        glob="**/*.txt",
+        loader_cls=TextLoader,
+        loader_kwargs={"encoding": "utf-8"},
+    )
     docs = loader.load()
 
-    # 2. Quebrar textos (Tamanho ideal para não cortar os links no final)
+    sources_loaded = sorted(
+        {os.path.basename(d.metadata.get("source", "")) for d in docs if d.metadata.get("source")}
+    )
+
     text_splitter = RecursiveCharacterTextSplitter(chunk_size=2500, chunk_overlap=250)
     splits = text_splitter.split_documents(docs)
 
- # 3. Criar Banco Vetorial (Processamento de Embeddings via HuggingFace)
+    chunk_counts: Counter[str] = Counter()
+    for s in splits:
+        chunk_counts[os.path.basename(s.metadata.get("source", "?"))] += 1
+
     embeddings = HuggingFaceEmbeddings(model_name="intfloat/multilingual-e5-large")
-        
-    # BANCO DE DADOS EM RAM
+
     vectorstore = Chroma.from_documents(
         documents=splits,
-        embedding=embeddings
+        embedding=embeddings,
     )
 
-    # ==========================================
-    # 🧠 ALGORITMO MMR (Adeus textos repetidos!)
-    # fetch_k=15: Ele lê 15 blocos nos bastidores.
-    # k=5: E devolve apenas os 5 MAIS DIFERENTES entre si.
-    # ==========================================
     retriever = vectorstore.as_retriever(
-        search_type="mmr", 
-        search_kwargs={"k": 5, "fetch_k": 15}
+        search_type="mmr",
+        search_kwargs={"k": 5, "fetch_k": 15},
     )
-    
+
     llm = ChatGroq(model_name="llama-3.3-70b-versatile", temperature=0.0)
 
-# ==========================================
-    # 5. Configuração do Prompt Multilíngue
-    # ==========================================
     system_prompt = (
         "You are Mateus Bitar's official AI assistant. "
         "Base your answer ONLY on the <context> provided below. "
@@ -67,12 +70,27 @@ def configurar_motor_nuvem():
         "</language_rule>"
     )
 
-    prompt = ChatPromptTemplate.from_messages([
-        ("system", system_prompt),
-        ("human", "Question: {input}\n\n[CRITICAL DIRECTIVE: You MUST evaluate the language of the Question above. Your ENTIRE reply MUST be translated to that exact same language. Do NOT use Portuguese if the question is in English.]")
-    ])
+    prompt = ChatPromptTemplate.from_messages(
+        [
+            ("system", system_prompt),
+            (
+                "human",
+                "Question: {input}\n\n[CRITICAL DIRECTIVE: You MUST evaluate the language of the Question above. Your ENTIRE reply MUST be translated to that exact same language. Do NOT use Portuguese if the question is in English.]",
+            ),
+        ]
+    )
 
-    # O filtro vai pegar o objeto feio do Groq e devolver só o texto bonito
     chain = prompt | llm | StrOutputParser()
 
-    return retriever, chain
+    ingest_metrics = {
+        "chunks_por_arquivo": dict(chunk_counts),
+        "fontes_ingeridas": sources_loaded,
+        "total_chunks": len(splits),
+        "total_documentos_brutos": len(docs),
+        "retriever_search_type": "mmr",
+        "retriever_k": 5,
+        "retriever_fetch_k": 15,
+        "diretorio_base": str(_BASE_CONHECIMENTO),
+    }
+
+    return retriever, chain, ingest_metrics
