@@ -52,7 +52,10 @@ aba_chat, aba_projetos = st.tabs([
 with aba_chat:
     st.title("🤖 Assistente de Portfólio")
     st.markdown("Olá! Sou a IA treinada para falar sobre a experiência, automações e projetos de dados do Mateus. O que você gostaria de saber?")
-
+    arquivos_na_nuvem = os.listdir('./base_conhecimento')
+    st.error(f"📂 ARQUIVOS QUE A NUVEM ESTÁ LENDO: {arquivos_na_nuvem}")
+    # ===============================
+    
     # 1. Cria um container invisível exclusivo para as mensagens
     container_mensagens = st.container()
 
