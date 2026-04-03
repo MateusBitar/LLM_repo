@@ -13,12 +13,9 @@ _REPO_ROOT = Path(__file__).resolve().parent
 _BASE_DIR = _REPO_ROOT / "base_conhecimento"
 
 _MSG_LIMITE_GROQ = (
-    "⏳ **Limite temporário do provedor de IA** (Groq). "
-    "Isso pode ocorrer **mesmo com um único usuário**: no plano gratuito existem tetos de "
-    "**requisições e de tokens por minuto**; um contexto longo ou várias mensagens seguidas podem disparar o limite.\n\n"
-    "**Aguarde cerca de um minuto** e envie a pergunta de novo. "
-    "Se repetir, confira cota e uso no painel da Groq ou tente mais tarde. "
-    "Não indica problema no seu aparelho."
+    "⏳ **O serviço de IA atingiu um limite temporário de uso.**\n\n"
+    "Por favor, **aguarde um minuto** e envie sua pergunta de novo. "
+    "Se continuar, tente novamente daqui a pouco — não é um problema no seu aparelho."
 )
 
 
@@ -32,8 +29,7 @@ def _invoke_chain_com_retry(chain, payload, placeholder, delays_s=(2, 4, 8)):
             if tentativa < ultimo:
                 espera = delays_s[tentativa]
                 placeholder.markdown(
-                    f"⏳ Limite momentâneo da API (frequente no plano gratuito). "
-                    f"Nova tentativa em {espera}s…"
+                    f"⏳ Aguarde um instante; nova tentativa em {espera}s…"
                 )
                 time.sleep(espera)
             else:
