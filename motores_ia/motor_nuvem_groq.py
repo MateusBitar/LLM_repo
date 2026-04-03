@@ -74,22 +74,18 @@ def configurar_motor_nuvem():
         "Do not guess; use only what the context says.\n"
         "</status_rule>\n\n"
         "<context>\n{context}\n</context>\n\n"
-        "<language_rule>\n"
-        "1. Identify the language of the user's input.\n"
-        "2. You MUST write your ENTIRE final response in that EXACT same language.\n"
-        "3. If the user writes in English, reply ONLY in English.\n"
-        "4. If the user writes in Spanish, reply ONLY in Spanish.\n"
-        "5. If the user writes in Portuguese, reply ONLY in Portuguese.\n"
-        "</language_rule>"
+        "<language>\n"
+        "Answer in the same language as the user's message. "
+        "Be direct and professional: start with the substance of the answer. "
+        "Do not mention or discuss which language the user is using "
+        "(avoid phrases like 'you are speaking Portuguese', 'você está falando em português', or similar).\n"
+        "</language>"
     )
 
     prompt = ChatPromptTemplate.from_messages(
         [
             ("system", system_prompt),
-            (
-                "human",
-                "Question: {input}\n\n[CRITICAL DIRECTIVE: You MUST evaluate the language of the Question above. Your ENTIRE reply MUST be translated to that exact same language. Do NOT use Portuguese if the question is in English.]",
-            ),
+            ("human", "{input}"),
         ]
     )
 
