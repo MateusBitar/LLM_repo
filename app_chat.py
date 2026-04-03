@@ -5,7 +5,7 @@ from pathlib import Path
 import streamlit as st
 from groq import RateLimitError
 
-from deploy_info import rotulo_deploy
+from deploy_info import data_referencia_para_prompt, rotulo_deploy
 from motores_ia.motor_nuvem_groq import configurar_motor_nuvem
 
 _REPO_ROOT = Path(__file__).resolve().parent
@@ -141,7 +141,11 @@ with aba_chat:
                 
                 try:
                     resposta = chain.invoke(
-                        {"context": textos_juntos, "input": prompt_usuario}
+                        {
+                            "context": textos_juntos,
+                            "input": prompt_usuario,
+                            "data_referencia": data_referencia_para_prompt(),
+                        }
                     )
                 except RateLimitError:
                     resposta = (

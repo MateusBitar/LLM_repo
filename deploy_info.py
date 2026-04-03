@@ -3,7 +3,25 @@ from __future__ import annotations
 
 import os
 import subprocess
+from datetime import datetime
 from pathlib import Path
+from zoneinfo import ZoneInfo
+
+_MESES_PT = (
+    "",
+    "janeiro",
+    "fevereiro",
+    "março",
+    "abril",
+    "maio",
+    "junho",
+    "julho",
+    "agosto",
+    "setembro",
+    "outubro",
+    "novembro",
+    "dezembro",
+)
 
 _REPO_ROOT = Path(__file__).resolve().parent
 
@@ -39,3 +57,12 @@ def rotulo_deploy() -> str:
     if os.environ.get("DEPLOY_REVISION"):
         return f"Deploy: {sha} (DEPLOY_REVISION)"
     return f"Deploy: {sha}"
+
+
+def data_referencia_para_prompt() -> str:
+    """Data ‘hoje’ no fuso de Brasília para idade, tempo de empresa e durações (atualizada a cada pergunta)."""
+    tz = ZoneInfo("America/Sao_Paulo")
+    agora = datetime.now(tz)
+    legivel = f"{agora.day} de {_MESES_PT[agora.month]} de {agora.year}"
+    iso = agora.date().isoformat()
+    return f"{legivel} (America/Sao_Paulo), calendário {iso}"
