@@ -1,4 +1,5 @@
 import os
+import time
 from collections import Counter
 from pathlib import Path
 
@@ -10,6 +11,34 @@ from motores_ia.motor_nuvem_groq import configurar_motor_nuvem
 
 _REPO_ROOT = Path(__file__).resolve().parent
 _BASE_DIR = _REPO_ROOT / "base_conhecimento"
+
+_MSG_LIMITE_GROQ = (
+    "⏳ **Limite temporário do provedor de IA** (Groq). "
+    "Isso pode ocorrer **mesmo com um único usuário**: no plano gratuito existem tetos de "
+    "**requisições e de tokens por minuto**; um contexto longo ou várias mensagens seguidas podem disparar o limite.\n\n"
+    "**Aguarde cerca de um minuto** e envie a pergunta de novo. "
+    "Se repetir, confira cota e uso no painel da Groq ou tente mais tarde. "
+    "Não indica problema no seu aparelho."
+)
+
+
+def _invoke_chain_com_retry(chain, payload, placeholder, delays_s=(2, 4, 8)):
+    """Alguns 429 da Groq são transitórios; tenta de novo com espera crescente."""
+    ultimo = len(delays_s)
+    for tentativa in range(ultimo + 1):
+        try:
+            return chain.invoke(payload)
+        except RateLimitError:
+            if tentativa < ultimo:
+                espera = delays_s[tentativa]
+                placeholder.markdown(
+                    f"⏳ Limite momentâneo da API (frequente no plano gratuito). "
+                    f"Nova tentativa em {espera}s…"
+                )
+                time.sleep(espera)
+            else:
+                return _MSG_LIMITE_GROQ
+    return _MSG_LIMITE_GROQ
 
 # 1. Configuração da Página (DEVE SER O PRIMEIRO COMANDO DO STREAMLIT)
 st.set_page_config(page_title="Assistente do Mateus", page_icon="🤖", layout="wide")
@@ -140,21 +169,13 @@ with aba_chat:
                     st.write(prompt_usuario)
                 # ==========================================
                 
-                try:
-                    resposta = chain.invoke(
-                        {
-                            "context": textos_juntos,
-                            "input": prompt_usuario,
-                            "data_referencia": data_referencia_para_prompt(),
-                        }
-                    )
-                except RateLimitError:
-                    resposta = (
-                        "⏳ **O serviço de IA atingiu um limite temporário de uso** "
-                        "(muitas pessoas usando o assistente ao mesmo tempo ou muitas perguntas em sequência).\n\n"
-                        "Por favor, **aguarde um minuto** e envie sua pergunta de novo. "
-                        "Se continuar, tente novamente daqui a pouco — não é um problema no seu aparelho."
-                    )
+                payload = {
+                    "context": textos_juntos,
+                    "input": prompt_usuario,
+                    "data_referencia": data_referencia_para_prompt(),
+                }
+                placeholder.markdown("✨ Gerando resposta…")
+                resposta = _invoke_chain_com_retry(chain, payload, placeholder)
                 placeholder.markdown(resposta)
                 
         # Salva a resposta da IA na memória
