@@ -1,5 +1,9 @@
-Canais de Contato de Mateus Bitar
-Para entrar em contato com o Mateus ou agendar uma conversa, utilize os seguintes canais oficiais:
+# Canais de contato — Mateus Bitar
+
+## Disponibilidade e como entram em contato
+Para assuntos profissionais, recrutamento, parcerias ou dúvidas sobre a carreira e os projetos do Mateus, os canais abaixo são os oficiais. Não há prazo fixo divulgado de resposta; mensagens em LinkedIn, e-mail e WhatsApp são acompanhadas na rotina de trabalho, em dias úteis, horário de Brasília. Para agendar ligação ou reunião, recomenda-se no primeiro contato informar o objetivo (ex.: vaga, entrevista, colaboração), a empresa ou contexto e, se possível, janelas de horário preferidas. O GitHub é o canal mais adequado para assuntos estritamente técnicos ligados a código em repositórios públicos.
+
+## Canais
 - LinkedIn: https://linkedin.com/in/mateus-bitar
 - GitHub: https://github.com/MateusBitar
 - E-mail: mateusrbitar@gmail.com
