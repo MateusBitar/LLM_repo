@@ -3,6 +3,7 @@ from collections import Counter
 from pathlib import Path
 
 import streamlit as st
+from groq import RateLimitError
 
 from deploy_info import rotulo_deploy
 from motores_ia.motor_nuvem_groq import configurar_motor_nuvem
@@ -138,13 +139,17 @@ with aba_chat:
                     st.write(prompt_usuario)
                 # ==========================================
                 
-                
-                resposta = chain.invoke({
-                    "context": textos_juntos,
-                    "input": prompt_usuario
-                })
-                # ==========================================
-                
+                try:
+                    resposta = chain.invoke(
+                        {"context": textos_juntos, "input": prompt_usuario}
+                    )
+                except RateLimitError:
+                    resposta = (
+                        "⏳ **O serviço de IA atingiu um limite temporário de uso** "
+                        "(muitas pessoas usando o assistente ao mesmo tempo ou muitas perguntas em sequência).\n\n"
+                        "Por favor, **aguarde um minuto** e envie sua pergunta de novo. "
+                        "Se continuar, tente novamente daqui a pouco — não é um problema no seu aparelho."
+                    )
                 placeholder.markdown(resposta)
                 
         # Salva a resposta da IA na memória

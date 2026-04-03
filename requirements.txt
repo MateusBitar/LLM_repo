@@ -5,6 +5,7 @@ langchain-community>=0.3.0
 langchain-core>=0.3.0
 langchain-chroma>=0.1.0
 langchain-groq
+groq>=0.4.0
 langchain-huggingface
 sentence-transformers
 python-dotenv
