@@ -73,7 +73,7 @@ def configurar_motor_nuvem():
         "LinkedIn: https://linkedin.com/in/mateus-bitar\n"
         "GitHub: https://github.com/MateusBitar\n"
         "E-mail: mateusrbitar@gmail.com\n"
-        "WhatsApp: +55 (61) 99559-7474\n"
+        "WhatsApp: https://wa.me/5561995597474 (tel. +55 61 99559-7474)\n"
         "Brief greetings (e.g. hi, thanks) may get a one-line polite reply inviting questions about Mateus—no full off-topic answers.\n"
         "</scope>\n\n"
         "<projects_rule>\n"

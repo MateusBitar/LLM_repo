@@ -38,6 +38,7 @@ with st.sidebar:
     st.markdown("👔 [LinkedIn](https://linkedin.com/in/mateus-bitar)")
     st.markdown("💻 [GitHub](https://github.com/MateusBitar)")
     st.markdown("📧 [E-mail](mailto:mateusrbitar@gmail.com)")
+    st.markdown("💬 [WhatsApp](https://wa.me/5561995597474)")
 
     st.divider()
     st.caption(rotulo_deploy())
