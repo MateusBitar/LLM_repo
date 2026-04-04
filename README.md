@@ -1,5 +1,5 @@
 
-# 🤖 Assistente Virtual de Portfólio (GenAI & RAG)
+# Assistente virtual de portfólio (GenAI & RAG)
 
 [![Python](https://img.shields.io/badge/Python-3.10+-3776AB?style=flat&logo=python&logoColor=white)]()
 [![Streamlit](https://img.shields.io/badge/Streamlit-FF4B4B?style=flat&logo=streamlit&logoColor=white)]()
@@ -7,78 +7,78 @@
 [![Groq](https://img.shields.io/badge/Groq_API-F55036?style=flat&logo=groq&logoColor=white)]()
 [![HuggingFace](https://img.shields.io/badge/Hugging_Face-FFD21E?style=flat&logo=huggingface&logoColor=black)]()
 
-Uma aplicação interativa de Inteligência Artificial Generativa projetada para substituir o formato estático de um currículo tradicional. Este projeto implementa um Agente Autônomo capaz de conversar com recrutadores, responder perguntas sobre minha trajetória profissional e detalhar meus projetos utilizando a arquitetura **RAG (Retrieval-Augmented Generation)**.
+Aplicação web conversacional que substitui o currículo estático: um agente baseado em **RAG** responde sobre trajetória, projetos e habilidades a partir de textos versionados em `base_conhecimento/`, com **LLM de alta performance** e regras de prompt para reduzir alucinações.
 
-## 🎯 O Desafio e a Solução
-O objetivo foi criar uma experiência dinâmica onde o usuário pode "entrevistar" meu portfólio. Para isso, desenvolvi uma pipeline de Machine Learning que ingere documentos de texto (minhas experiências, habilidades e projetos acadêmicos/profissionais), converte-os em vetores semânticos e utiliza um LLM de ponta para gerar respostas precisas, blindadas contra alucinações.
+**Deploy público:** [portfolio-mateus.streamlit.app](https://portfolio-mateus.streamlit.app/)
 
-## ⚙️ Arquitetura e Engenharia do Projeto
-O sistema foi desenhado com foco em modularidade, baixa latência e precisão factual:
+## Desafio e solução
 
-1. **Base de Conhecimento (Ingestão):** Arquivos estruturados em `.txt` contendo informações profissionais (ex: experiência como Full Stack na Montezuma e Conde, automações RPA, etc.).
-2. **Vetorização (Embeddings):** Utilização do modelo `multilingual-e5-large` da Hugging Face para transformar os textos em embeddings de alta precisão semântica.
-3. **Banco de Dados Vetorial:** Implementação do **ChromaDB** para armazenamento persistente e busca rápida do contexto mais relevante (`k=10`).
-4. **Motor de Inferência (LLM):** Integração com a API da **Groq** utilizando o modelo **Llama 3.3 70B**, garantindo respostas em milissegundos com capacidade de raciocínio de nível corporativo.
-5. **Engenharia de Prompt:** Sistema blindado com `temperature=0.0` e regras estritas de extração de links e formatação, forçando a IA a atuar de forma factual e objetiva.
-6. **Interface de Usuário:** Deploy de uma interface web conversacional responsiva utilizando **Streamlit**, com gerenciamento de estado (Session State) para manter a memória do chat.
+Pipeline que ingere documentos, gera embeddings, recupera trechos relevantes e condiciona o modelo ao contexto recuperado — com interface **Streamlit** e memória de chat por sessão.
 
-## 🛠️ Tecnologias Utilizadas
-* **Linguagem:** Python
-* **Orquestração de IA:** LangChain
-* **Modelos de Linguagem (LLMs):** Llama 3.3 70B (via Groq API)
-* **Embeddings:** Hugging Face API (`intfloat/multilingual-e5-large`)
-* **Banco Vetorial:** ChromaDB
-* **Front-end / Web App:** Streamlit
+## Arquitetura (resumo)
 
-## 💻 Como rodar este projeto localmente
+1. **Base de conhecimento:** arquivos `.txt` em `base_conhecimento/`.
+2. **Embeddings:** `intfloat/multilingual-e5-large` (Hugging Face).
+3. **Vetores:** **Chroma** recriado em memória a cada inicialização do processo (evita estado obsoleto no deploy).
+4. **LLM:** **Groq** — Llama 3.3 70B, `temperature=0`.
+5. **Recuperação:** **MMR** com `k=5` e `fetch_k=15` para diversificar os trechos enviados ao prompt.
+6. **UI:** Streamlit (`app_chat.py`), com `@st.cache_resource` na inicialização do motor.
 
-### 1. Clone o repositório
+Detalhes e decisões de engenharia: [docs/arquitetura.md](docs/arquitetura.md).
+
+## Estrutura do repositório
+
+| Caminho | Função |
+|---------|--------|
+| `app_chat.py` | Entrada Streamlit (chat + aba de projetos). |
+| `deploy_info.py` | Data de referência (fuso Brasília) para o prompt. |
+| `motores_ia/` | Motor em nuvem (`motor_nuvem_groq.py`) e motor local opcional (`motor_local_llama.py`). |
+| `base_conhecimento/` | Textos que alimentam o RAG. |
+| `docs/` | Documentação técnica. |
+| `.streamlit/` | Tema da aplicação. |
+
+## Tecnologias
+
+- Python, LangChain, Streamlit, Chroma, Groq API, Hugging Face Embeddings.
+
+## Como rodar localmente
+
+### 1. Clonar
+
 ```bash
-git clone [https://github.com/MateusBitar/LLM_repo.git](https://github.com/MateusBitar/LLM_repo.git)
+git clone https://github.com/MateusBitar/LLM_repo.git
 cd LLM_repo
-````
-
-### 2\. Crie e ative o ambiente virtual
-
-**Windows:**
-
-```bash
-python -m venv venv
-venv\Scripts\activate
 ```
 
-**Linux/Mac:**
+### 2. Ambiente virtual
 
-```bash
-python -m venv venv
-source venv/bin/activate
-```
+**Windows:** `python -m venv venv` e `venv\Scripts\activate`  
+**Linux/macOS:** `python -m venv venv` e `source venv/bin/activate`
 
-### 3\. Instale as dependências
+### 3. Dependências
 
 ```bash
 pip install -r requirements.txt
 ```
 
-### 4\. Configure as Variáveis de Ambiente
+### 4. Variáveis de ambiente
 
-Renomeie o arquivo `.env.example` para `.env` e insira suas chaves de API reais (este arquivo será ignorado pelo Git):
+Copie `.env.example` para `.env` e preencha as chaves:
 
 ```env
-GROQ_API_KEY=sua_chave_groq_aqui
-HUGGINGFACEHUB_API_TOKEN=sua_chave_hf_aqui
-HF_TOKEN=sua_chave_hf_aqui
+GROQ_API_KEY=sua_chave_groq
+HUGGINGFACEHUB_API_TOKEN=sua_chave_hf
+HF_TOKEN=sua_chave_hf
 ```
 
-### 5\. Execute a Aplicação
+### 5. Executar
 
 ```bash
 streamlit run app_chat.py
 ```
 
-A aplicação estará disponível no seu navegador em `http://localhost:8501`.
+Abre em `http://localhost:8501`.
 
------
+---
 
-*Desenvolvido por **Mateus Bitar** - Conecte-se comigo no [LinkedIn](https://linkedin.com/in/mateus-bitar).*
-
+Desenvolvido por **Mateus Bitar** — [LinkedIn](https://linkedin.com/in/mateus-bitar).

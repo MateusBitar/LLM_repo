@@ -1,15 +1,6 @@
 [theme]
-# Cor principal (Botões, ícones de carregamento, destaques)
 primaryColor = "#065f4f"
-
-# Cor de fundo principal da tela (O chat e as abas)
 backgroundColor = "#02251f"
-
-# Cor de fundo secundária (A barra lateral e as caixas de mensagem da IA)
 secondaryBackgroundColor = "#03392f"
-
-# Cor do texto (Branco para dar um contraste perfeito com o fundo escuro)
 textColor = "#FFFFFF"
-
-# Fonte do sistema (Opcional, 'sans serif' deixa o visual bem moderno)
 font = "sans serif"
