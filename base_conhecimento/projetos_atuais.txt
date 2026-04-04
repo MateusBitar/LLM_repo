@@ -5,7 +5,7 @@ Resumo enxuto. Detalhes longos ficam nos arquivos dedicados por projeto na pasta
 ## 1. Assistente de Portfólio Inteligente (RAG & GenAI)
 Aplicação conversacional com RAG para responder sobre carreira e projetos do Mateus com base nos documentos da base (reduz alucinações). Stack: Python, LangChain, Groq API (Llama 3.3 70B), Hugging Face Embeddings, ChromaDB.
 - Repositório: https://github.com/MateusBitar/LLM_repo
-- Deploy: https://mateusbitar-portfolio.streamlit.app/
+- Deploy: https://portfolio-mateus.streamlit.app/
 
 ## 2. Sistema de Clipping Jurídico e Newsletter (Legal-tech)
 Em desenvolvimento ativo: automação de coleta, sumarização (NLP) e newsletter jurídica segmentada.

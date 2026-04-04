@@ -1,4 +1,15 @@
-import os
+"""
+Motor RAG para produção: ingestão de ``base_conhecimento``, Chroma in-memory,
+embeddings Hugging Face (E5 multilingual), LLM Groq (Llama 3.3 70B).
+
+Variáveis de ambiente (carregadas via ``python-dotenv`` em desenvolvimento):
+``GROQ_API_KEY``, ``HUGGINGFACEHUB_API_TOKEN`` — exigidas pelos clientes LangChain.
+
+Versão da aplicação: 1.0
+"""
+
+from __future__ import annotations
+
 from pathlib import Path
 
 from dotenv import load_dotenv
@@ -12,14 +23,17 @@ from langchain_text_splitters import RecursiveCharacterTextSplitter
 
 load_dotenv()
 
-chave_groq = os.getenv("GROQ_API_KEY")
-chave_hf = os.getenv("HUGGINGFACEHUB_API_TOKEN")
-
 _REPO_ROOT = Path(__file__).resolve().parent.parent
 _BASE_CONHECIMENTO = _REPO_ROOT / "base_conhecimento"
 
 
 def configurar_motor_nuvem():
+    """
+    Monta retriever (MMR) e cadeia prompt | LLM | parser de string.
+
+    Returns:
+        Tupla ``(retriever, chain)`` para uso no Streamlit.
+    """
     loader = DirectoryLoader(
         str(_BASE_CONHECIMENTO),
         glob="**/*.txt",

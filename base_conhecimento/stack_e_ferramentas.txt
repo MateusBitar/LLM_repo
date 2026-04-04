@@ -18,7 +18,7 @@ Lista focada em **o que uso na prática** (projetos, faculdade e trabalho). Comp
 - **Pickle / Joblib** — persistência de modelos.
 
 ## BI, visualização e “camada de produto”
-- **Streamlit** — dashboards, apps interativos e deploy (portfólio, churn, BI na ASNAB).
+- **Streamlit** — nível intermediário; dashboards, apps interativos e deploy (portfólio, churn, BI na ASNAB).
 - **Matplotlib**, **Seaborn**, **Plotly** — EDA e visualização em apps.
 
 ## Bancos e dados não estruturados
@@ -49,6 +49,7 @@ Lista focada em **o que uso na prática** (projetos, faculdade e trabalho). Comp
 ## Infraestrutura e TI (experiência ASNAB)
 - **Servidores Debian em nuvem** — criação e manutenção.
 - **Rede e serviços** — suporte e operação envolvendo **DNS**, **HTTPS**, **SMTP** (contexto de suporte N1 e infra).
+- **WordPress** — criação e manutenção de sites institucionais (contexto ASNAB).
 
 ## Outras ferramentas e competências
 - **SAP CPI** — nível básico (formação via curso hands-on; detalhes em `formacao_complementar_cursos.txt`).
