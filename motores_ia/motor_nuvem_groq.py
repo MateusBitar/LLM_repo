@@ -1,4 +1,3 @@
-from collections import Counter
 import os
 from pathlib import Path
 
@@ -21,8 +20,6 @@ _BASE_CONHECIMENTO = _REPO_ROOT / "base_conhecimento"
 
 
 def configurar_motor_nuvem():
-    print("☁️ Ligando o Motor de Nuvem: Groq (Llama 3 70B) + HF Embeddings...")
-
     loader = DirectoryLoader(
         str(_BASE_CONHECIMENTO),
         glob="**/*.txt",
@@ -31,16 +28,8 @@ def configurar_motor_nuvem():
     )
     docs = loader.load()
 
-    sources_loaded = sorted(
-        {os.path.basename(d.metadata.get("source", "")) for d in docs if d.metadata.get("source")}
-    )
-
     text_splitter = RecursiveCharacterTextSplitter(chunk_size=2500, chunk_overlap=250)
     splits = text_splitter.split_documents(docs)
-
-    chunk_counts: Counter[str] = Counter()
-    for s in splits:
-        chunk_counts[os.path.basename(s.metadata.get("source", "?"))] += 1
 
     embeddings = HuggingFaceEmbeddings(model_name="intfloat/multilingual-e5-large")
 
@@ -128,15 +117,4 @@ def configurar_motor_nuvem():
 
     chain = prompt | llm | StrOutputParser()
 
-    ingest_metrics = {
-        "chunks_por_arquivo": dict(chunk_counts),
-        "fontes_ingeridas": sources_loaded,
-        "total_chunks": len(splits),
-        "total_documentos_brutos": len(docs),
-        "retriever_search_type": "mmr",
-        "retriever_k": 5,
-        "retriever_fetch_k": 15,
-        "diretorio_base": str(_BASE_CONHECIMENTO),
-    }
-
-    return retriever, chain, ingest_metrics
+    return retriever, chain
