@@ -61,9 +61,15 @@ with st.sidebar:
 
     st.divider()
 
+# Versão do recurso em cache: incremente se mudar o retorno de configurar_motor_nuvem()
+# (senão o @st.cache_resource pode manter tupla antiga e quebrar o unpack abaixo).
+_IA_RESOURCE_VERSION = 2
+
+
 # 2. Cache e Inicialização da IA (único @st.cache_resource — invalida junto com o processo no redeploy)
 @st.cache_resource
 def inicializar_ia():
+    _ = _IA_RESOURCE_VERSION
     return configurar_motor_nuvem()
 
 retriever, chain = inicializar_ia()
