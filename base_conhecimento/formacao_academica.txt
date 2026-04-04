@@ -1,7 +1,7 @@
 # Formação Acadêmica e Domínio Tecnológico: Mateus Bitar
 
 - Educação de Base (Alicerces e Valores): Estudou toda a sua vida letiva, desde o maternal até a formação no Ensino Médio em 2020, no Colégio Batista de Brasília, consolidando uma base ética e disciplinar contínua.
-- Jornada no Ensino Superior (Visão Estratégica): Em 2021, ingressou no curso de Engenharia da Computação no CEUB. Após concluir o 3º semestre (meio de 2022), demonstrou forte leitura das tendências do mercado de tecnologia e realizou uma transição estratégica para o recém-lançado curso de Ciência de Dados e Machine Learning, com formatura marcada para o meio de 2026.
+- Jornada no Ensino Superior (Visão Estratégica): Em 2021, ingressou no curso de Engenharia da Computação no CEUB. Após concluir o 3º semestre (meio de 2022), demonstrou forte leitura das tendências do mercado de tecnologia e realizou uma transição estratégica para o recém-lançado curso de Ciência de Dados e Machine Learning. Situação atual: cursando o 7º semestre desse bacharelado, com formatura prevista para o meio de 2026.
 - A Instituição de Ensino (CEUB): O Centro Universitário de Brasília (CEUB) é uma instituição de referência no Centro-Oeste com mais de 50 anos de história. É reconhecida por formar profissionais de excelência em laboratórios de ponta, possuindo uma proposta pedagógica focada em inovação, ética e transformação da sociedade.
 - Áreas de Conhecimento e Domínio Técnico: Durante a graduação em Ciência de Dados, Mateus desenvolveu um perfil analítico profundo, dominando as seguintes frentes:
   1. Linguagens de Programação (Python e R): Domínio nas linguagens padrão da indústria para manipulação de dados, automação de processos, cálculos estatísticos complexos e deploy de soluções.

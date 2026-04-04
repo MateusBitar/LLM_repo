@@ -1,0 +1,12 @@
+# Formação complementar — cursos e plataformas (Mateus Bitar)
+
+Cursos livres e estudo contínuo fora da grade formal do CEUB. Nem todo item abaixo equivale à stack principal de produção no trabalho atual — servem como base e atualização de conhecimento.
+
+## Udemy (exemplos relevantes)
+- Machine Learning e Data Science com Python de A a Z
+- SAP CPI for Beginners with Hands-on
+- Curso completo de LGPD para Cartórios
+- Java Masterclass (2025): carga horária extensa; Java não é a linguagem principal de entrega nos projetos em destaque no portfólio
+
+## Observação
+Para **ferramentas e bibliotecas usadas em projetos e no trabalho**, preferir o arquivo `stack_e_ferramentas.txt` como referência técnica densa.

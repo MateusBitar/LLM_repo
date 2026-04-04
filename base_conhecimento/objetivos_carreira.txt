@@ -1,0 +1,16 @@
+# Objetivos de carreira — Mateus Bitar
+
+## Foco profissional (intencionalmente amplo, não genérico)
+
+Busco oportunidades em que eu possa aplicar o que já construí na prática: **dados** (análise, modelagem, pipelines), **desenvolvimento de software** (com ênfase em Python e ecossistemas web/API quando fizer sentido) e **automação** (integrações, rotinas repetitivas, orquestração de fluxos — incluindo visão próxima de RPA quando o contexto exige).
+
+Essa combinação não é falta de direção: é o mesmo eixo que percorre minha formação em Ciência de Dados, meus projetos (ML, APIs, RAG, apps Streamlit) e minha atuação atual em escritório com IA e automações. Titulos de vaga que costumam encaixar bem incluem, entre outros: **Cientista de Dados Júnior**, **Analista de Dados** com forte componente técnico, **Desenvolvedor(a) Python**, **Desenvolvedor(a) Full Stack** (quando a stack for compatível com o que uso), ou papéis híbridos de **engenharia/analytics com automação**.
+
+## Formato de trabalho e localização
+
+- **Presencial ou híbrido:** desde que a atividade presencial seja em **Brasília–DF** (não estou buscando mudança para outras cidades).
+- **Remoto:** totalmente aberto, preferencialmente com contratação ou escopo alinhado ao mercado brasileiro e com possibilidade de atuar **a partir de Brasília–DF** (sem necessidade de relocação).
+
+## O que valorizo na próxima oportunidade
+
+Ambiente em que eu possa **aprender com o time**, entregar impacto mensurável (dados, produto interno ou automação) e continuar evoluindo em **ML/IA aplicada** e **boas práticas de engenharia**.

@@ -11,3 +11,19 @@ Aplicação conversacional com RAG para responder sobre carreira e projetos do M
 Em desenvolvimento ativo: automação de coleta, sumarização (NLP) e newsletter jurídica segmentada.
 - Repositório: https://github.com/MateusBitar/Clipping_juridico
 - Detalhes completos e aviso de WIP: arquivo projeto_clipping_juridico.txt (mesma base de conhecimento).
+
+## 3. Previsão de Churn (XGBoost + SMOTE)
+Pipeline de ML com app Streamlit; foco em recall para identificar clientes em risco de cancelamento.
+- Repositório: https://github.com/MateusBitar/Previsao-de-Churn
+- Deploy: https://previsao-de-churn.streamlit.app/
+- Detalhes: projeto_previsao_churn.txt
+
+## 4. Sistema de recomendação (SVD + FastAPI + Docker)
+API REST com modelo de filtragem colaborativa persistido e ambiente conteinerizado.
+- Repositório: https://github.com/MateusBitar/recomendation-system
+- Detalhes: projeto_recomendacao_svd.txt
+
+## 5. Chatbot RAG Nascentia (TCC — CEUB)
+Assistente acadêmico com RAG, LangChain, Hugging Face e ChromaDB; projeto em grupo.
+- Repositório: https://github.com/FelipeYoshidaCEUB/chatbot-ceub
+- Detalhes: projeto_tcc_nascentia_rag.txt

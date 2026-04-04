@@ -1,0 +1,58 @@
+# Stack e ferramentas — Mateus Bitar (referência densa para RAG)
+
+Lista focada em **o que uso na prática** (projetos, faculdade e trabalho). Complementa `formacao_academica.txt` e os arquivos `projeto_*.txt` sem repetir narrativa longa. **Idiomas:** `idiomas.txt`. **Cursos livres (Udemy etc.):** `formacao_complementar_cursos.txt`.
+
+## Linguagens
+- **Python** — principal para dados, ML, APIs, automação, scraping e apps.
+- **R** — análise estatística e fluxos acadêmicos de dados.
+- **SQL** — consultas, modelagem e integração com pipelines.
+- **C++** — nível básico (base acadêmica).
+- **Java** — exposição via curso complementar (não é stack principal de entrega).
+
+## Dados, ML e estatística
+- **Pandas**, **NumPy** — manipulação e preparação de dados.
+- **Scikit-learn** — pré-processamento, modelos baseline, fluxos de treino/avaliação.
+- **XGBoost** — gradient boosting (ex.: churn).
+- **imbalanced-learn (SMOTE)** — dados desbalanceados.
+- **scikit-surprise (SVD)** — filtragem colaborativa / recomendação.
+- **Pickle / Joblib** — persistência de modelos.
+
+## BI, visualização e “camada de produto”
+- **Streamlit** — dashboards, apps interativos e deploy (portfólio, churn, BI na ASNAB).
+- **Matplotlib**, **Seaborn**, **Plotly** — EDA e visualização em apps.
+
+## Bancos e dados não estruturados
+- **SQL** — relacional (uso recorrente em projetos e experiência profissional).
+- **NoSQL** — familiaridade com modelos documento/grafos no contexto acadêmico e arquiteturas de dados (detalhes em `formacao_academica.txt`).
+- **ChromaDB** — armazenamento vetorial para RAG (agente de portfólio, TCC Nascentia).
+
+## APIs, back-end e deploy
+- **FastAPI**, **Uvicorn** — API REST (sistema de recomendação).
+- **Docker** — containerização do serviço de recomendação.
+- **Streamlit Community Cloud** — deploy de apps públicos (quando aplicável aos projetos).
+
+## GenAI, RAG e NLP (projetos)
+- **LangChain** — orquestração RAG e encadeamento de componentes.
+- **Hugging Face** — embeddings e modelos NLP.
+- **Groq API** (ex.: Llama 3.3 70B) — inferência em nuvem, baixa latência.
+- **Ollama** + **Llama 3** — inferência local para desenvolvimento do agente de portfólio.
+- **Scraping em Python** — coleta automatizada (linha de trabalho do clipping jurídico).
+
+## Versionamento, colaboração e qualidade de código
+- **Git**, **GitHub** — controle de versão, repositórios públicos dos projetos.
+
+## Automação, integração e produtividade (incl. “vibe coding”)
+- **n8n** — orquestração de fluxos e automações no trabalho atual.
+- **Replit** — prototipagem e entregas ágeis quando faz sentido no contexto do projeto.
+- **Cursor** — IDE com assistência de IA para acelerar desenvolvimento (**vibe coding**: ciclo rápido ideia → código → iteração com apoio de LLM, sempre com revisão humana e critérios de qualidade).
+
+## Infraestrutura e TI (experiência ASNAB)
+- **Servidores Debian em nuvem** — criação e manutenção.
+- **Rede e serviços** — suporte e operação envolvendo **DNS**, **HTTPS**, **SMTP** (contexto de suporte N1 e infra).
+
+## Outras ferramentas e competências
+- **SAP CPI** — nível básico (formação via curso hands-on; detalhes em `formacao_complementar_cursos.txt`).
+- **Pacote Office** — rotina corporativa e documentação.
+
+## Contexto acadêmico relacionado à stack
+- **Monitor de Lógica de Programação e Estrutura de Dados (CEUB)** — reforço em fundamentos aplicáveis a Python e boas práticas de código.
