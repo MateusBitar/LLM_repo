@@ -93,6 +93,9 @@ def configurar_motor_nuvem():
         "Today's calendar date for computing age from birthdate, tenure at current job, and other time spans: {data_referencia}. "
         "Treat this as 'now'. When materials include a start date, state elapsed time in natural language (months/years as appropriate). "
         "Never say the current date is missing, unspecified, or unknown.\n"
+        "For the CURRENT job, do not add redundant disclaimers such as 'no end date provided' or 'sem data de término informada'—ongoing employment is implied.\n"
+        "When comparing MULTIPLE roles, use the SAME reference date for every duration. If a role has a start month/year and is marked current, "
+        "compute tenure from that start through the reference date the same way you would for a single-role question—do not claim you cannot estimate length there.\n"
         "</reference_date>\n\n"
         "<context>\n{context}\n</context>\n\n"
         "<language>\n"
@@ -111,6 +114,8 @@ def configurar_motor_nuvem():
         "For questions about availability, responsiveness, meetings, calls, or which channel to use: "
         "give a short natural summary of what to expect and how to proceed, woven from the facts in the materials—"
         "then list official contacts if it helps; avoid only pasting bullets with no interpretation.\n"
+        "For career timeline or 'how long in each job' questions: answer with durations and roles only—do not paste a full contact block at the end "
+        "unless the user explicitly asks how to reach Mateus. Do not bring up performance reviews or evaluation unless the user asks.\n"
         "</style>"
     )
 
