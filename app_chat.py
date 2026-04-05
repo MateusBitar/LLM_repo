@@ -91,7 +91,7 @@ with st.sidebar:
     st.divider()
 
 # Incrementar ao alterar o retorno de configurar_motor_nuvem() para invalidar o cache do Streamlit.
-_IA_RESOURCE_VERSION = 5
+_IA_RESOURCE_VERSION = 6
 
 
 @st.cache_resource

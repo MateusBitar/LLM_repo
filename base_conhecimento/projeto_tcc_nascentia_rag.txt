@@ -9,6 +9,8 @@
 
 - Participação do Mateus: Projeto desenvolvido em grupo como TCC da graduação. Mateus Bitar atuou como um dos desenvolvedores, colaborando na integração dos módulos (dados, recuperação, conexão com o LLM) e na entrega da solução ponta a ponta.
 
+- Créditos — integrantes do grupo (Projeto Integrador III / TCC, Ciência de Dados e Machine Learning — CEUB): Rafael Martins, Felipe Yoshida, Matheus Alves, Mateus Bitar, José Muller e João Pedro Borges. O repositório no GitHub está associado a Felipe Yoshida (FelipeYoshidaCEUB). Sempre que o assistente citar este projeto, deve mencionar que é trabalho em equipe e nomear os colegas acima, não apenas Mateus.
+
 - Tecnologias Utilizadas: LangChain, Hugging Face (embeddings/modelos NLP), ChromaDB, LLMs open-source, Python.
 
 - Entregas e Resultados: Demonstração de domínio de aplicações RAG em contexto institucional educacional, com ênfase em redução de alucinações e respostas fundamentadas em documentos.
