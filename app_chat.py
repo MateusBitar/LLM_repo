@@ -8,6 +8,7 @@ Ponto de entrada recomendado: ``streamlit run app_chat.py``
 from __future__ import annotations
 
 import time
+from pathlib import Path
 
 import streamlit as st
 from groq import RateLimitError
@@ -16,6 +17,27 @@ from deploy_info import data_referencia_para_prompt
 from motores_ia.motor_nuvem_groq import configurar_motor_nuvem
 
 __version__ = "1.0"
+
+_BASE_CONHECIMENTO = Path(__file__).resolve().parent / "base_conhecimento"
+
+# Sempre anexado ao contexto do LLM: o retriever semântico muitas vezes não puxa estes arquivos.
+_ARQUIVOS_LINKS_PROJETO = ("projetos_atuais.txt", "links_projetos.txt")
+
+
+def _sufixo_links_projetos() -> str:
+    partes: list[str] = []
+    for nome in _ARQUIVOS_LINKS_PROJETO:
+        caminho = _BASE_CONHECIMENTO / nome
+        if caminho.is_file():
+            partes.append(caminho.read_text(encoding="utf-8"))
+    if not partes:
+        return ""
+    return (
+        "\n\n<<< LINKS_E_DEPLOYS_OFICIAIS_PROJETOS — ao mencionar qualquer projeto listado abaixo, "
+        "inclua na sua resposta os URLs exatamente como aparecem (GitHub e deploy quando houver) >>>\n\n"
+        + "\n\n---\n\n".join(partes)
+    )
+
 
 _MSG_LIMITE_GROQ = (
     "⏳ **O serviço de IA atingiu um limite temporário de uso.**\n\n"
@@ -69,7 +91,7 @@ with st.sidebar:
     st.divider()
 
 # Incrementar ao alterar o retorno de configurar_motor_nuvem() para invalidar o cache do Streamlit.
-_IA_RESOURCE_VERSION = 3
+_IA_RESOURCE_VERSION = 4
 
 
 @st.cache_resource
@@ -114,6 +136,7 @@ with aba_chat:
 
                 documentos = retriever.invoke(prompt_usuario)
                 textos_juntos = "\n\n".join(doc.page_content for doc in documentos)
+                textos_juntos += _sufixo_links_projetos()
 
                 payload = {
                     "context": textos_juntos,
