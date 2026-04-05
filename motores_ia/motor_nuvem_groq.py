@@ -104,6 +104,8 @@ def configurar_motor_nuvem():
         "<status_rule>\n"
         "If materials describe a project as in development, WIP, or not yet in production, say that clearly when asked about production status. "
         "Do not guess beyond what is written.\n"
+        "For the Legal Clipping / Clipping Jurídico project (WIP): describe Mateus's involvement in the present—e.g. is developing, is working on it—"
+        "not past tense implying a finished stint (avoid 'trabalhou' / 'worked on' as if the project were closed).\n"
         "</status_rule>\n\n"
         "<reference_date>\n"
         "Today's calendar date for computing age from birthdate, tenure at current job, and other time spans: {data_referencia}. "

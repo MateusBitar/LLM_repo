@@ -17,6 +17,9 @@ Escalabilidade do processamento de dados jurídicos e precisão dos filtros de r
 ## Papel do Mateus
 Arquiteto do sistema e desenvolvedor principal, unindo automação (incluindo visão de RPA) e Ciência de Dados para lidar com grandes volumes de informação.
 
+## Como descrever nas respostas (tom verbal)
+Mateus **está trabalhando** / **está desenvolvendo ativamente** este sistema (projeto em curso). **Não** use formulações no passado que sugiram trabalho concluído (evitar “trabalhou no sistema”, “já desenvolveu o clipping” como se fosse encerrado). Prefira: “está desenvolvendo”, “vem trabalhando em”, “atuando no desenvolvimento de”.
+
 ## Links
 - Repositório (GitHub): https://github.com/MateusBitar/Clipping_juridico — criado como ponto de referência; o repositório pode estar vazio ou em estágio inicial enquanto o código é desenvolvido.
 - Deploy público: ainda não divulgado nesta fase.
