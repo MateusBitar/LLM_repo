@@ -54,7 +54,7 @@ def configurar_motor_nuvem():
 
     retriever = vectorstore.as_retriever(
         search_type="mmr",
-        search_kwargs={"k": 5, "fetch_k": 15},
+        search_kwargs={"k": 6, "fetch_k": 18},
     )
 
     llm = ChatGroq(model_name="llama-3.3-70b-versatile", temperature=0.0)
@@ -92,6 +92,14 @@ def configurar_motor_nuvem():
         "Do not append unrelated project names or URLs when the question is narrow and not about those projects "
         "(e.g. a specific course grade, yes/no about a company, or a question that does not call for listing portfolio items).\n"
         "</projects_rule>\n\n"
+        "<depth>\n"
+        "For open-ended questions (who is Mateus, projects overview, career or work history, skills in depth): "
+        "give a developed answer—an opening line, then structured detail in short paragraphs or bullets with concrete facts "
+        "(role, stack, outcomes, and project links from the materials when you name each project). Avoid bare one-line replies.\n"
+        "The materials include ASNAB (TI internship, Feb 2024–Aug 2025) as prior employment before Montezuma. "
+        "Never claim you have no information about jobs before Montezuma when ASNAB or the career summary appears in the context; "
+        "cover both current and prior roles from what is present.\n"
+        "</depth>\n\n"
         "<status_rule>\n"
         "If materials describe a project as in development, WIP, or not yet in production, say that clearly when asked about production status. "
         "Do not guess beyond what is written.\n"

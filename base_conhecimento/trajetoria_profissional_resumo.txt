@@ -1,0 +1,9 @@
+# Trajetória profissional — Mateus Bitar (visão geral)
+
+Palavras-chave: experiências profissionais, histórico de trabalho, empregos, carreira, onde trabalhou, estágio, ASNAB, Montezuma.
+
+- Emprego atual: Montezuma e Conde Advogados Associados — Desenvolvedor Full Stack Júnior, desde agosto de 2025, com foco em sistemas internos, automação e integração de IA no escritório.
+
+- Experiência anterior (concluída): ASNAB (Associação Nacional dos Empregados da Conab) — Estágio em TI de fevereiro de 2024 a agosto de 2025, em Brasília. Atuação em suporte e infraestrutura de TI, modernização de gestão de informações, relatórios exploratórios e BI com Streamlit. Esta experiência é anterior à Montezuma; ambas constam na base de conhecimento.
+
+Detalhes por empresa: ver experiencia_montezuma.txt e experiencia_asnab.txt na base de conhecimento.
