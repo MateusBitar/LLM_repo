@@ -24,7 +24,7 @@ Lista focada em **o que uso na prática** (projetos, faculdade e trabalho). Comp
 ## Bancos e dados não estruturados
 - **SQL** — relacional (uso recorrente em projetos e experiência profissional).
 - **NoSQL** — familiaridade com modelos documento/grafos no contexto acadêmico e arquiteturas de dados (detalhes em `formacao_academica.txt`).
-- **ChromaDB** — armazenamento vetorial para RAG (agente de portfólio, TCC Nascentia).
+- **ChromaDB** — armazenamento vetorial para RAG (agente de portfólio, Projeto Integrador Nascentia).
 
 ## APIs, back-end e deploy
 - **FastAPI**, **Uvicorn** — API REST (sistema de recomendação).

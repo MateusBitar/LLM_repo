@@ -50,7 +50,7 @@ def configurar_motor_local():
         "Confira o LinkedIn do Mateus.' "
         "REGRA DE PROJETOS: Liste sempre o 'Assistente de Portfólio' e o "
         "'Sistema de Clipping Jurídico' quando perguntado sobre projetos atuais. "
-        "REGRA DO NASCENTIA: Destaque que foi um TCC em grupo com contribuição ativa do Mateus. "
+        "REGRA DO NASCENTIA: Destaque que foi Projeto Integrador em grupo (três semestres, equivalente ao trabalho de conclusão; não TCC formal) com contribuição ativa do Mateus. "
         "REGRA DE LINKS: SEMPRE inclua as URLs corretas dos projetos citados. Nunca misture os links. "
         "\n\n--- INÍCIO DO CONTEXTO ---\n{context}\n--- FIM DO CONTEXTO ---\n\n"
         "=== LANGUAGE AND TRANSLATION RULES (CRITICAL) ===\n"

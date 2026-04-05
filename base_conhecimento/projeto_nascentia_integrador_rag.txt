@@ -1,0 +1,18 @@
+# Projeto de Destaque: Chatbot RAG Nascentia (Projeto Integrador — CEUB)
+
+- Natureza acadêmica: Trabalho desenvolvido em grupo como **Projeto Integrador**, ao longo de **três semestres**, no curso de Ciência de Dados e Machine Learning do CEUB. Na prática foi o **trabalho de conclusão / fechamento da graduação**, **equivalente ao papel de um TCC**, mas a modalidade oficial do curso **não foi TCC** — foi a sequência de Projetos Integradores. Nas respostas, prefira “Projeto Integrador” ou “trabalho de conclusão (equivalente a TCC)”; se o usuário disser “TCC”, pode confirmar a equivalência e esclarecer o nome oficial (integrador, 3 semestres).
+
+- Links do Projeto:
+  * Repositório (GitHub): https://github.com/FelipeYoshidaCEUB/chatbot-ceub
+
+- O Desafio / Demanda: Oferecer um assistente virtual que responda dúvidas sobre informações acadêmicas e institucionais com base em documentos oficiais, reduzindo respostas genéricas ou incorretas típicas de LLMs sem contexto.
+
+- O que foi feito (Ação e Arquitetura): Sistema conversacional com arquitetura RAG (Retrieval-Augmented Generation): recuperação de trechos relevantes da base documental antes da geração da resposta, para ancorar o modelo em fontes. Integração de modelos de linguagem open-source, NLP com Hugging Face, banco vetorial ChromaDB e orquestração via LangChain.
+
+- Participação do Mateus: Mateus Bitar atuou como um dos desenvolvedores do grupo, colaborando na integração dos módulos (dados, recuperação, conexão com o LLM) e na entrega da solução ponta a ponta.
+
+- Créditos — integrantes do grupo: Rafael Martins, Felipe Yoshida, Matheus Alves, Mateus Bitar, José Muller e João Pedro Borges. O repositório no GitHub está associado a Felipe Yoshida (FelipeYoshidaCEUB). Sempre que o assistente citar este projeto, deve mencionar que é trabalho em equipe e nomear os colegas acima, não apenas Mateus.
+
+- Tecnologias Utilizadas: LangChain, Hugging Face (embeddings/modelos NLP), ChromaDB, LLMs open-source, Python.
+
+- Entregas e Resultados: Demonstração de domínio de aplicações RAG em contexto institucional educacional, com ênfase em redução de alucinações e respostas fundamentadas em documentos.

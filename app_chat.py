@@ -91,7 +91,7 @@ with st.sidebar:
     st.divider()
 
 # Incrementar ao alterar o retorno de configurar_motor_nuvem() para invalidar o cache do Streamlit.
-_IA_RESOURCE_VERSION = 6
+_IA_RESOURCE_VERSION = 7
 
 
 @st.cache_resource
@@ -183,10 +183,10 @@ with aba_projetos:
     st.markdown("- 💻 [Repositório no GitHub](https://github.com/MateusBitar/recomendation-system)")
     st.divider()
 
-    st.subheader("🎓 Chatbot Nascentia (TCC em Grupo)")
+    st.subheader("🎓 Chatbot Nascentia (Projeto Integrador — CEUB)")
     st.markdown(
-        "Assistente virtual baseado em RAG para auxiliar na consulta de informações "
-        "acadêmicas e institucionais, integrando LangChain e Hugging Face."
+        "Assistente virtual baseado em RAG (Projeto Integrador em grupo, três semestres no CEUB — "
+        "equivalente ao trabalho de conclusão da graduação), integrando LangChain e Hugging Face."
     )
     st.markdown("- 💻 [Repositório no GitHub](https://github.com/FelipeYoshidaCEUB/chatbot-ceub)")
     st.divider()

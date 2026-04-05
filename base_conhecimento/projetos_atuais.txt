@@ -23,7 +23,7 @@ API REST com modelo de filtragem colaborativa persistido e ambiente conteineriza
 - Repositório: https://github.com/MateusBitar/recomendation-system
 - Detalhes: projeto_recomendacao_svd.txt
 
-## 5. Chatbot RAG Nascentia (TCC — CEUB)
-Assistente acadêmico com RAG, LangChain, Hugging Face e ChromaDB; projeto em grupo no CEUB. Integrantes: Rafael Martins, Felipe Yoshida, Matheus Alves, Mateus Bitar, José Muller e João Pedro Borges (créditos completos em projeto_tcc_nascentia_rag.txt).
+## 5. Chatbot RAG Nascentia (Projeto Integrador — CEUB, 3 semestres)
+Assistente acadêmico com RAG, LangChain, Hugging Face e ChromaDB; projeto em grupo, integrador ao longo de três semestres (equivalente ao trabalho de conclusão; não foi modalidade TCC formal). Integrantes: Rafael Martins, Felipe Yoshida, Matheus Alves, Mateus Bitar, José Muller e João Pedro Borges (detalhes em projeto_nascentia_integrador_rag.txt).
 - Repositório: https://github.com/FelipeYoshidaCEUB/chatbot-ceub
-- Detalhes: projeto_tcc_nascentia_rag.txt
+- Detalhes: projeto_nascentia_integrador_rag.txt
