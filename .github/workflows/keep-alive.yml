@@ -1,0 +1,31 @@
+name: Keep Alive Streamlit
+
+on:
+  schedule:
+    # A cada hora (UTC)
+    - cron: "0 * * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  ping-app:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Ping principal
+        run: |
+          set -e
+          URL="https://portfolio-mateus.streamlit.app/"
+          echo "Pingando ${URL}"
+          curl --fail --silent --show-error --max-time 25 "${URL}" > /dev/null
+
+      - name: Retry curto em caso de falha transitória
+        if: failure()
+        run: |
+          set -e
+          URL="https://portfolio-mateus.streamlit.app/"
+          echo "Falha transitória. Tentando novamente..."
+          sleep 20
+          curl --fail --silent --show-error --max-time 25 "${URL}" > /dev/null

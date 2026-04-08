@@ -10,6 +10,8 @@ Versão da aplicação: 1.0
 
 from __future__ import annotations
 
+import hashlib
+import json
 from pathlib import Path
 
 from dotenv import load_dotenv
@@ -25,6 +27,43 @@ load_dotenv()
 
 _REPO_ROOT = Path(__file__).resolve().parent.parent
 _BASE_CONHECIMENTO = _REPO_ROOT / "base_conhecimento"
+_CHROMA_DIR = _REPO_ROOT / ".cache_chroma_portfolio"
+_INDEX_META_FILE = _CHROMA_DIR / "index_meta.json"
+
+
+def _fingerprint_base_conhecimento() -> str:
+    """
+    Gera assinatura estável da base para decidir se reindexa.
+
+    Usa nome de arquivo + tamanho + mtime_ns para evitar leitura completa
+    dos conteúdos no bootstrap.
+    """
+    itens: list[str] = []
+    for caminho in sorted(_BASE_CONHECIMENTO.rglob("*.txt")):
+        stat = caminho.stat()
+        relativo = caminho.relative_to(_BASE_CONHECIMENTO).as_posix()
+        itens.append(f"{relativo}|{stat.st_size}|{stat.st_mtime_ns}")
+    payload = "\n".join(itens).encode("utf-8")
+    return hashlib.sha256(payload).hexdigest()
+
+
+def _carregar_fingerprint_salvo() -> str | None:
+    if not _INDEX_META_FILE.is_file():
+        return None
+    try:
+        data = json.loads(_INDEX_META_FILE.read_text(encoding="utf-8"))
+    except (OSError, json.JSONDecodeError):
+        return None
+    fp = data.get("kb_fingerprint")
+    return fp if isinstance(fp, str) else None
+
+
+def _salvar_fingerprint(fp: str) -> None:
+    _CHROMA_DIR.mkdir(parents=True, exist_ok=True)
+    _INDEX_META_FILE.write_text(
+        json.dumps({"kb_fingerprint": fp}, ensure_ascii=False, indent=2),
+        encoding="utf-8",
+    )
 
 
 def configurar_motor_nuvem():
@@ -34,23 +73,36 @@ def configurar_motor_nuvem():
     Returns:
         Tupla ``(retriever, chain)`` para uso no Streamlit.
     """
-    loader = DirectoryLoader(
-        str(_BASE_CONHECIMENTO),
-        glob="**/*.txt",
-        loader_cls=TextLoader,
-        loader_kwargs={"encoding": "utf-8"},
-    )
-    docs = loader.load()
-
-    text_splitter = RecursiveCharacterTextSplitter(chunk_size=2500, chunk_overlap=250)
-    splits = text_splitter.split_documents(docs)
-
     embeddings = HuggingFaceEmbeddings(model_name="intfloat/multilingual-e5-large")
+    fp_atual = _fingerprint_base_conhecimento()
+    fp_salvo = _carregar_fingerprint_salvo()
+    reutilizar_indice = _CHROMA_DIR.is_dir() and fp_salvo == fp_atual
 
-    vectorstore = Chroma.from_documents(
-        documents=splits,
-        embedding=embeddings,
-    )
+    if reutilizar_indice:
+        vectorstore = Chroma(
+            persist_directory=str(_CHROMA_DIR),
+            embedding_function=embeddings,
+        )
+    else:
+        loader = DirectoryLoader(
+            str(_BASE_CONHECIMENTO),
+            glob="**/*.txt",
+            loader_cls=TextLoader,
+            loader_kwargs={"encoding": "utf-8"},
+        )
+        docs = loader.load()
+
+        text_splitter = RecursiveCharacterTextSplitter(
+            chunk_size=2500, chunk_overlap=250
+        )
+        splits = text_splitter.split_documents(docs)
+
+        vectorstore = Chroma.from_documents(
+            documents=splits,
+            embedding=embeddings,
+            persist_directory=str(_CHROMA_DIR),
+        )
+        _salvar_fingerprint(fp_atual)
 
     retriever = vectorstore.as_retriever(
         search_type="mmr",

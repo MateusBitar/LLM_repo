@@ -100,7 +100,16 @@ def inicializar_ia():
     return configurar_motor_nuvem()
 
 
-retriever, chain = inicializar_ia()
+def obter_ia():
+    """
+    Inicializa o motor de IA sob demanda e mantém em session_state.
+
+    Evita custo de bootstrap ao abrir somente a aba de projetos.
+    """
+    if "ia_engine" not in st.session_state:
+        with st.spinner("🚀 Inicializando IA (primeiro acesso)..."):
+            st.session_state.ia_engine = inicializar_ia()
+    return st.session_state.ia_engine
 
 aba_chat, aba_projetos = st.tabs(["💬 Chat com a IA", "🚀 Meus Projetos"])
 
@@ -109,6 +118,9 @@ with aba_chat:
     st.markdown(
         "Olá! Sou a IA treinada para falar sobre a experiência, automações e "
         "projetos de dados do Mateus. O que você gostaria de saber?"
+    )
+    st.caption(
+        "A IA é iniciada no primeiro envio para acelerar a abertura do portfólio."
     )
 
     container_mensagens = st.container()
@@ -124,6 +136,7 @@ with aba_chat:
     if prompt_usuario := st.chat_input(
         "Pergunte sobre as habilidades e projetos do Mateus..."
     ):
+        retriever, chain = obter_ia()
         st.session_state.mensagens.append({"role": "user", "content": prompt_usuario})
 
         with container_mensagens:
